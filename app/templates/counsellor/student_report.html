@@ -1,0 +1,817 @@
+{% extends "base.html" %}
+{% block navbar %}{% endblock %}
+
+{% block head %}
+<!-- Google Fonts: Playfair Display and Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    /* Styling System */
+    body {
+        background-color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        color: #334155;
+    }
+
+    .report-wrapper {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 24px;
+    }
+
+    /* Page Header */
+    .report-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-bottom: 2px dashed #cbd5e1;
+        padding-bottom: 24px;
+        margin-bottom: 40px;
+    }
+
+    .report-branding {
+        text-align: left;
+    }
+
+    .branding-title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 32px;
+        font-weight: 800;
+        background: linear-gradient(135deg, #1a3a6b 20%, #0d9488 95%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0px;
+    }
+
+    .branding-sub {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #64748b;
+    }
+
+    .student-details-box {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 16px 20px;
+        font-size: 13px;
+        line-height: 1.5;
+        text-align: left;
+        max-width: 380px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+    }
+
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+    }
+    .detail-row:last-child {
+        margin-bottom: 0;
+    }
+    .detail-label {
+        color: #64748b;
+        font-weight: 500;
+        margin-right: 20px;
+    }
+    .detail-value {
+        color: #0f172a;
+        font-weight: 700;
+        text-align: right;
+    }
+
+    .actions-area {
+        display: flex;
+        gap: 12px;
+        margin-top: 14px;
+        justify-content: flex-end;
+    }
+
+    .btn-navy {
+        background-color: #1a3a6b;
+        color: white;
+        border: none;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 8px 18px;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+    .btn-navy:hover {
+        background-color: #0f2a52;
+        color: white;
+    }
+
+    .btn-outlined {
+        background-color: transparent;
+        color: #64748b;
+        border: 1px solid #cbd5e1;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 8px 18px;
+        border-radius: 8px;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .btn-outlined:hover {
+        background-color: #f1f5f9;
+        color: #334155;
+    }
+
+    /* Cards */
+    .report-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 36px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.015), 0 8px 10px -6px rgba(0, 0, 0, 0.015);
+        margin-bottom: 36px;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #1a3a6b;
+        border-bottom: 2px solid #f1f5f9;
+        padding-bottom: 12px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .section-title i {
+        font-size: 19px;
+        color: #0d9488;
+    }
+
+    /* Tables */
+    .table-report {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+    }
+    .table-report th {
+        background-color: #f8fafc;
+        color: #475569;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 12px 16px;
+        border-bottom: 2px solid #e2e8f0;
+        text-align: left;
+    }
+    .table-report td {
+        padding: 14px 16px;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 14px;
+        color: #0f172a;
+    }
+    .table-report tbody tr:nth-of-type(odd) {
+        background-color: rgba(248, 250, 252, 0.4);
+    }
+
+    /* Badges */
+    .badge-report {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+    }
+    .badge-high, .badge-severe, .badge-extremely-severe {
+        background-color: #fef2f2;
+        color: #b91c1c;
+        border: 1px solid #fca5a5;
+    }
+    .badge-moderate {
+        background-color: #fffbeb;
+        color: #d97706;
+        border: 1px solid #fde047;
+    }
+    .badge-low, .badge-normal, .badge-mild {
+        background-color: #f0fdf4;
+        color: #15803d;
+        border: 1px solid #bbf7d0;
+    }
+
+    /* Interpretation text styling */
+    .interpretation-header {
+        font-weight: 700;
+        color: #1e293b;
+        margin-top: 24px;
+        margin-bottom: 12px;
+        font-size: 15px;
+    }
+    .interpretation-text {
+        font-size: 14px;
+        line-height: 1.65;
+        color: #475569;
+        margin-bottom: 16px;
+        text-align: justify;
+    }
+    .interpretation-text:last-child {
+        margin-bottom: 0;
+    }
+
+    .overall-box {
+        background-color: #f8fafc;
+        border-left: 4px solid #0d9488;
+        border-radius: 0 8px 8px 0;
+        padding: 18px 20px;
+        margin-top: 24px;
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 500;
+        color: #334155;
+    }
+
+    /* Loading state overlay */
+    .loader-overlay {
+        text-align: center;
+        padding: 80px 0;
+    }
+    .spinner-report {
+        width: 44px;
+        height: 44px;
+        border: 4px solid #f1f5f9;
+        border-top: 4px solid #1a3a6b;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 16px auto;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Semicircle / horizontal gauge style */
+    .progress-gauge-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 24px;
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+    }
+
+    /* Print styling */
+    @media print {
+        body {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+        .no-print {
+            display: none !important;
+        }
+        .report-wrapper {
+            margin: 0 !important;
+            padding: 0 !important;
+            max-width: 100% !important;
+        }
+        .report-card {
+            border: none !important;
+            box-shadow: none !important;
+            padding: 12px 0 !important;
+            page-break-inside: avoid;
+            margin-bottom: 20px !important;
+        }
+        .section-title {
+            color: #000000 !important;
+            border-bottom: 1.5px solid #000000 !important;
+        }
+        .overall-box {
+            border: 1px solid #cbd5e1 !important;
+            background-color: #ffffff !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="report-wrapper">
+    <!-- Top Action Headers -->
+    <div class="report-topbar">
+        <div class="report-branding">
+            <div class="branding-title">Safe Space</div>
+            <div class="branding-sub">AI-Driven Analysis</div>
+        </div>
+        
+        <div class="text-end no-print">
+            <div class="student-details-box" id="details-box">
+                <div class="detail-row">
+                    <span class="detail-label">Name:</span>
+                    <span class="detail-value" id="stu-name">--</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Age / Gender:</span>
+                    <span class="detail-value" id="stu-age-gender">--</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Admission Number:</span>
+                    <span class="detail-value" id="stu-id">--</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Cohort:</span>
+                    <span class="detail-value" id="stu-cohort">--</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Assessment Date:</span>
+                    <span class="detail-value" id="stu-date">--</span>
+                </div>
+            </div>
+            
+            <div class="actions-area">
+                <a href="{{ url_for('counsellor.export_student', student_id=student.id) }}" class="btn btn-navy">
+                    <i class="fa-solid fa-file-pdf me-1"></i> Download PDF
+                </a>
+                <a href="{{ url_for('counsellor.dashboard') }}" class="btn btn-outlined">
+                    <i class="fa-solid fa-chevron-left me-1"></i> Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print Only Student Header (avoids empty details on print) -->
+    <div class="d-none d-print-block mb-4 p-3 border rounded">
+        <h3 class="fw-bold mb-2">Psychological Assessment Report</h3>
+        <div class="row g-3 fs-7">
+            <div class="col-4"><strong>Student Name:</strong> <span id="print-name">--</span></div>
+            <div class="col-4"><strong>Admission No:</strong> <span id="print-id">--</span></div>
+            <div class="col-4"><strong>Cohort:</strong> <span id="print-cohort">--</span></div>
+            <div class="col-4"><strong>Age / Gender:</strong> <span id="print-age-gender">--</span></div>
+            <div class="col-4"><strong>Assessment Date:</strong> <span id="print-date">--</span></div>
+            <div class="col-4"><strong>Status:</strong> COMPLETED</div>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loader-overlay" id="loader">
+        <div class="spinner-report"></div>
+        <h5 class="text-secondary fw-semibold">Compiling AI Insights Report...</h5>
+    </div>
+
+    <!-- Report Main Content (hidden while loading) -->
+    <div id="report-content" style="display: none;">
+        
+        <!-- SECTION 1: BFI-44 -->
+        <div class="report-card">
+            <h2 class="section-title">
+                <i class="fa-solid fa-circle-user"></i> Big Five Personality Profile (BFI-44)
+            </h2>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <table class="table-report">
+                        <thead>
+                            <tr>
+                                <th>Personality Domain</th>
+                                <th>Score</th>
+                                <th>Interpretation Level</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bfi-tbody">
+                            <!-- Dynamic -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-6 mb-4 mb-lg-0 text-center">
+                    <div style="position: relative; height: 260px; max-width: 320px; margin: 0 auto;">
+                        <canvas id="bfiRadarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interpretation-header">Domain-Specific Interpretations</div>
+            <div id="bfi-interpretations-box">
+                <!-- Dynamic -->
+            </div>
+            
+            <div class="overall-box" id="bfi-overall-text">
+                <!-- Dynamic -->
+            </div>
+        </div>
+
+        <!-- SECTION 2: DASS-21 -->
+        <div class="report-card">
+            <h2 class="section-title">
+                <i class="fa-solid fa-heart-pulse"></i> DASS-21 Severity Scales
+            </h2>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <table class="table-report">
+                        <thead>
+                            <tr>
+                                <th>Emotional State</th>
+                                <th>Raw Score</th>
+                                <th>Severity Classification</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dass-tbody">
+                            <!-- Dynamic -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-6 mb-4 mb-lg-0 text-center">
+                    <div style="position: relative; height: 240px; max-width: 360px; margin: 0 auto;">
+                        <canvas id="dassBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interpretation-header">Clinical Scale Interpretations</div>
+            <div id="dass-interpretations-box">
+                <!-- Dynamic -->
+            </div>
+            
+            <div class="overall-box" id="dass-overall-text">
+                <!-- Dynamic -->
+            </div>
+        </div>
+
+        <!-- SECTION 3: EQ-SQ -->
+        <div class="report-card">
+            <h2 class="section-title">
+                <i class="fa-solid fa-brain"></i> EQ-SQ Social-Emotional Quotients
+            </h2>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <table class="table-report">
+                        <thead>
+                            <tr>
+                                <th>Quotient Assessment</th>
+                                <th>Score (0-40)</th>
+                                <th>Interpersonal Range</th>
+                            </tr>
+                        </thead>
+                        <tbody id="eq-sq-tbody">
+                            <!-- Dynamic -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-6">
+                    <div class="progress-gauge-container">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <span class="fw-semibold text-secondary small">Emotional Quotient (EQ)</span>
+                                <span class="fw-bold text-dark" id="eq-val-span">0/40</span>
+                            </div>
+                            <div class="progress" style="height: 12px; border-radius: 6px; background-color: #e2e8f0;">
+                                <div class="progress-bar" id="eq-bar-fill" style="width: 0%; background-color: #0d9488; border-radius: 6px;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <span class="fw-semibold text-secondary small">Social Quotient (SQ)</span>
+                                <span class="fw-bold text-dark" id="sq-val-span">0/40</span>
+                            </div>
+                            <div class="progress" style="height: 12px; border-radius: 6px; background-color: #e2e8f0;">
+                                <div class="progress-bar" id="sq-bar-fill" style="width: 0%; background-color: #4f46e5; border-radius: 6px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interpretation-header">Interpersonal Interpretations</div>
+            <div class="interpretation-text" id="eq-interpretation-text">--</div>
+            <div class="interpretation-text" id="sq-interpretation-text">--</div>
+            
+            <div class="overall-box" id="eq-sq-overall-text">
+                <!-- Dynamic -->
+            </div>
+        </div>
+
+        <!-- SECTION 4: Home Adjustment -->
+        <div class="report-card">
+            <h2 class="section-title">
+                <i class="fa-solid fa-house-chimney-user"></i> Home & Family Adjustment Environment
+            </h2>
+            
+            <h4 class="fw-bold text-navy mb-3">
+                Home Adjustment: <span id="home-score-txt">--</span>/15 — <span id="home-lvl-txt">--</span>
+            </h4>
+            
+            <div class="progress mb-4" style="height: 14px; border-radius: 8px; background-color: #e2e8f0;">
+                <div class="progress-bar" id="home-bar-fill" style="width: 0%; border-radius: 8px;"></div>
+            </div>
+            
+            <div class="interpretation-header">Family Environment Context</div>
+            <div class="interpretation-text" id="home-interpretation-text">--</div>
+        </div>
+
+        <!-- SECTION 5: Integrated Summary -->
+        <div class="report-card">
+            <h2 class="section-title">
+                <i class="fa-solid fa-rectangle-list"></i> Integrated Clinical Summary
+            </h2>
+            <p class="interpretation-text" id="summary-text" style="font-size: 15px; line-height: 1.8; font-weight: 500;">
+                --
+            </p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const studentId = "{{ student.id }}";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        loadReportData();
+    });
+
+    async function loadReportData() {
+        try {
+            const response = await fetch(`/api/counsellor/student/${studentId}/full-report`);
+            if (!response.ok) {
+                alert("Failed to compile reports.");
+                return;
+            }
+            const data = await response.json();
+
+            // Populate Student Details (Box & Print Header)
+            const details = data.student;
+            document.getElementById("stu-name").innerText = details.name;
+            document.getElementById("stu-age-gender").innerText = `${details.age}y / ${details.gender}`;
+            document.getElementById("stu-id").innerText = details.admission_number || details.uai_id;
+            document.getElementById("stu-cohort").innerText = details.cohort;
+            document.getElementById("stu-date").innerText = details.date_of_assessment || details.date;
+
+            document.getElementById("print-name").innerText = details.name;
+            document.getElementById("print-age-gender").innerText = `${details.age}y / ${details.gender}`;
+            document.getElementById("print-id").innerText = details.admission_number || details.uai_id;
+            document.getElementById("print-cohort").innerText = details.cohort;
+            document.getElementById("print-date").innerText = details.date_of_assessment || details.date;
+
+            // 1. Render BFI-44
+            renderBfiData(data.bfi44);
+
+            // 2. Render DASS-21
+            renderDassData(data.dass21);
+
+            // 3. Render EQ-SQ
+            renderEqSqData(data.eq_sq);
+
+            // 4. Render Home Adjustment
+            renderHomeData(data.home_adjustment || data.home);
+
+            // 5. Render Integrated Summary
+            document.getElementById("summary-text").innerHTML = data.integrated_summary || data.summary;
+
+            // Show Content, Hide Loader
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("report-content").style.display = "block";
+
+        } catch (e) {
+            console.error(e);
+            alert("Error rendering psychological report.");
+        }
+    }
+
+    function renderBfiData(bfi) {
+        if (!bfi || !bfi.scores) return;
+
+        const tbody = document.getElementById("bfi-tbody");
+        tbody.innerHTML = "";
+        
+        const domains = ["Extraversion", "Agreeableness", "Conscientiousness", "Neuroticism", "Openness"];
+        const scoresList = [];
+
+        domains.forEach(d => {
+            const rawVal = bfi.scores[d];
+            const raw = (rawVal && typeof rawVal === 'object') ? (rawVal.score ?? 3.0) : (rawVal ?? 3.0);
+            const lvl = (rawVal && typeof rawVal === 'object') ? (rawVal.level ?? "Moderate") : ((bfi.levels && bfi.levels[d]) ?? "Moderate");
+            scoresList.push(raw);
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td><strong>${d === "Openness" ? "Openness to Experience" : d}</strong></td>
+                <td><strong>${raw.toFixed(2)}</strong></td>
+                <td><span class="badge-report badge-${lvl.toLowerCase()}">${lvl}</span></td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Populate interpretations
+        const interpBox = document.getElementById("bfi-interpretations-box");
+        interpBox.innerHTML = "";
+        
+        domains.forEach(d => {
+            const interp = bfi.interpretations[d];
+            if (interp) {
+                const p = document.createElement("p");
+                p.className = "interpretation-text";
+                p.innerHTML = `<strong>${d === "Openness" ? "Openness to Experience" : d}:</strong> ${interp}`;
+                interpBox.appendChild(p);
+            }
+        });
+
+        document.getElementById("bfi-overall-text").innerText = bfi.overall_paragraph || bfi.overall;
+
+        // Radar chart
+        const ctx = document.getElementById("bfiRadarChart").getContext("2d");
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Extraversion', 'Agreeableness', 'Conscientiousness', 'Neuroticism', 'Openness'],
+                datasets: [{
+                    label: 'Scores',
+                    data: scoresList,
+                    backgroundColor: 'rgba(13, 148, 136, 0.2)',
+                    borderColor: '#0d9488',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#1a3a6b',
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    r: {
+                        min: 1.0,
+                        max: 5.0,
+                        ticks: { stepSize: 1.0, display: false },
+                        grid: { color: '#cbd5e1' },
+                        angleLines: { color: '#e2e8f0' }
+                    }
+                }
+            }
+        });
+    }
+
+    function renderDassData(dass) {
+        if (!dass || !dass.scores) return;
+
+        const tbody = document.getElementById("dass-tbody");
+        tbody.innerHTML = "";
+
+        const subscales = ["Depression", "Anxiety", "Stress"];
+        const scoresList = [];
+        const bgColors = [];
+
+        const colorMap = {
+            "Normal": "#22c55e",
+            "Mild": "#84cc16",
+            "Moderate": "#f97316",
+            "Severe": "#ef4444",
+            "Extremely Severe": "#991b1b"
+        };
+
+        subscales.forEach(s => {
+            const rawVal = dass.scores[s];
+            const raw = (rawVal && typeof rawVal === 'object') ? (rawVal.score ?? 0) : (rawVal ?? 0);
+            const sev = (rawVal && typeof rawVal === 'object') ? (rawVal.severity ?? "Normal") : ((dass.levels && dass.levels[s]) ?? "Normal");
+            scoresList.push(raw);
+            bgColors.push(colorMap[sev] || "#1a3a6b");
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td><strong>${s}</strong></td>
+                <td><strong>${raw}</strong></td>
+                <td><span class="badge-report badge-${sev.toLowerCase().replace(' ', '-')}">${sev}</span></td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Interpretations
+        const interpBox = document.getElementById("dass-interpretations-box");
+        interpBox.innerHTML = "";
+        
+        subscales.forEach(s => {
+            const interp = dass.interpretations[s];
+            if (interp) {
+                const p = document.createElement("p");
+                p.className = "interpretation-text";
+                p.innerHTML = `<strong>${s}:</strong> ${interp}`;
+                interpBox.appendChild(p);
+            }
+        });
+
+        document.getElementById("dass-overall-text").innerText = dass.overall_paragraph || dass.overall;
+
+        // Bar Chart
+        const ctx = document.getElementById("dassBarChart").getContext("2d");
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Depression', 'Anxiety', 'Stress'],
+                datasets: [{
+                    data: scoresList,
+                    backgroundColor: bgColors,
+                    borderRadius: 6,
+                    barThickness: 36
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 42,
+                        ticks: { stepSize: 10 }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    }
+
+    function renderEqSqData(eq_sq) {
+        if (!eq_sq) return;
+
+        const eqVal = eq_sq.scores && eq_sq.scores.EQ;
+        const sqVal = eq_sq.scores && eq_sq.scores.SQ;
+        
+        const eqScore = (eqVal && typeof eqVal === 'object') ? (eqVal.score ?? 20) : (eq_sq.eq_score ?? 20);
+        const eqLvl = (eqVal && typeof eqVal === 'object') ? (eqVal.level ?? "Moderate") : (eq_sq.eq_level ?? "Moderate");
+        const sqScore = (sqVal && typeof sqVal === 'object') ? (sqVal.score ?? 20) : (eq_sq.sq_score ?? 20);
+        const sqLvl = (sqVal && typeof sqVal === 'object') ? (sqVal.level ?? "Moderate") : (eq_sq.sq_level ?? "Moderate");
+
+        const tbody = document.getElementById("eq-sq-tbody");
+        tbody.innerHTML = "";
+
+        // EQ row
+        const trEq = document.createElement("tr");
+        trEq.innerHTML = `
+            <td><strong>Emotional Quotient (EQ)</strong></td>
+            <td><strong>${eqScore} / 40</strong></td>
+            <td><span class="badge-report badge-${eqLvl.toLowerCase()}">${eqLvl}</span></td>
+        `;
+        tbody.appendChild(trEq);
+
+        // SQ row
+        const trSq = document.createElement("tr");
+        trSq.innerHTML = `
+            <td><strong>Social Quotient (SQ)</strong></td>
+            <td><strong>${sqScore} / 40</strong></td>
+            <td><span class="badge-report badge-${sqLvl.toLowerCase()}">${sqLvl}</span></td>
+        `;
+        tbody.appendChild(trSq);
+
+        // Gauges
+        document.getElementById("eq-val-span").innerText = `${eqScore}/40`;
+        document.getElementById("eq-bar-fill").style.width = `${(eqScore / 40) * 100}%`;
+
+        document.getElementById("sq-val-span").innerText = `${sqScore}/40`;
+        document.getElementById("sq-bar-fill").style.width = `${(sqScore / 40) * 100}%`;
+
+        // Interpretations
+        const eqInterp = eq_sq.interpretations ? eq_sq.interpretations.EQ : eq_sq.eq_interpretation;
+        const sqInterp = eq_sq.interpretations ? eq_sq.interpretations.SQ : eq_sq.sq_interpretation;
+
+        document.getElementById("eq-interpretation-text").innerHTML = `<strong>EQ Interpretation:</strong> ${eqInterp}`;
+        document.getElementById("sq-interpretation-text").innerHTML = `<strong>SQ Interpretation:</strong> ${sqInterp}`;
+
+        document.getElementById("eq-sq-overall-text").innerText = eq_sq.overall_paragraph || eq_sq.overall;
+    }
+
+    function renderHomeData(home) {
+        if (!home) return;
+
+        document.getElementById("home-score-txt").innerText = home.score;
+        document.getElementById("home-lvl-txt").innerText = home.level;
+
+        const fill = (home.score / 15) * 100;
+        const bar = document.getElementById("home-bar-fill");
+        bar.style.width = `${fill}%`;
+
+        // Color coding
+        if (home.color === "green") {
+            bar.style.backgroundColor = "#22c55e";
+        } else if (home.color === "yellow") {
+            bar.style.backgroundColor = "#eab308";
+        } else {
+            bar.style.backgroundColor = "#ef4444";
+        }
+
+        document.getElementById("home-interpretation-text").innerText = home.interpretation;
+    }
+</script>
+{% endblock %}

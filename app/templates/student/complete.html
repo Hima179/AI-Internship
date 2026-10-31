@@ -1,0 +1,364 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+* { font-family: 'Inter', sans-serif; }
+
+.results-page {
+    background: linear-gradient(135deg, #003366 0%, #005599 50%, #003366 100%);
+    min-height: 100vh;
+    padding: 30px 20px;
+}
+
+.results-card {
+    background: white;
+    border-radius: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* Header */
+.results-header {
+    background: linear-gradient(135deg, #003366, #005599);
+    color: white;
+    padding: 30px 40px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.results-header img { height: 60px; }
+
+.results-title {
+    text-align: center;
+    flex: 1;
+}
+
+.results-title h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.results-title p { margin: 4px 0 0; font-size: 13px; color: #aac8e8; }
+
+.completed-badge {
+    background: #28a745;
+    color: white;
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Stats Grid */
+.stats-section { padding: 28px 36px 0; }
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    border-top: 4px solid #003366;
+}
+
+.stat-box.green  { border-top-color: #28a745; }
+.stat-box.red    { border-top-color: #dc3545; }
+.stat-box.orange { border-top-color: #fd7e14; }
+.stat-box.blue   { border-top-color: #0d6efd; }
+.stat-box.teal   { border-top-color: #20c997; }
+.stat-box.gray   { border-top-color: #6c757d; }
+
+.stat-box .stat-val {
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-box.green  .stat-val { color: #28a745; }
+.stat-box.red    .stat-val { color: #dc3545; }
+.stat-box.orange .stat-val { color: #fd7e14; }
+.stat-box.blue   .stat-val { color: #0d6efd; }
+.stat-box.teal   .stat-val { color: #20c997; }
+.stat-box.gray   .stat-val { color: #6c757d; }
+
+.stat-box .stat-label { font-size: 11px; color: #777; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Highlights Row */
+.highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.highlight-box {
+    background: #f0f4ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    border-left: 4px solid #003366;
+}
+
+.highlight-box .hl-label { font-size: 11px; text-transform: uppercase; color: #666; font-weight: 700; letter-spacing: 0.5px; }
+.highlight-box .hl-val { font-size: 16px; font-weight: 800; color: #003366; margin-top: 4px; }
+
+/* Table Section */
+.table-section { padding: 0 36px 20px; }
+
+.table-section h5 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #003366;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.results-table th {
+    background: #003366;
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.results-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.results-table tr:hover td { background: #f8f9ff; }
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-attempted  { background: #d4edda; color: #155724; }
+.status-expired    { background: #fff3cd; color: #856404; }
+.status-unattempted{ background: #e2e3e5; color: #383d41; }
+
+/* Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px 36px 32px;
+    border-top: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+}
+
+.btn-restart {
+    background: #003366;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 36px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-restart:hover { background: #004d99; color: white; }
+
+.btn-export {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 36px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-export:hover { background: #218838; color: white; }
+
+/* Score Circle */
+.score-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #003366, #20c997);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0 auto 8px;
+    box-shadow: 0 4px 14px rgba(0,51,102,0.35);
+}
+
+.score-circle .sc-val { font-size: 22px; font-weight: 900; line-height: 1; }
+.score-circle .sc-lbl { font-size: 9px; letter-spacing: 0.5px; opacity: 0.85; }
+</style>
+
+<div class="results-page">
+    <div class="results-card">
+
+        <!-- Header -->
+        <div class="results-header">
+            <img src="{{ url_for('static', filename='img/uai_logo.png') }}" alt="UAI Logo">
+            <div class="results-title">
+                <h1>🎉 Quiz Completed! — UAI Quiz</h1>
+                <p>{{ student_name }} &nbsp;|&nbsp; {{ stats.completed_at }}</p>
+            </div>
+            <div class="completed-badge">✓ Completed</div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+
+            <!-- Score Circle + Stats Grid -->
+            <div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
+
+                <!-- Score circle -->
+                <div style="text-align:center; min-width:100px; padding-top:10px;">
+                    <div class="score-circle">
+                        <div class="sc-val">{{ stats.attempted }}</div>
+                        <div class="sc-lbl">/ {{ stats.total }}</div>
+                    </div>
+                    <div style="font-size:11px; font-weight:700; color:#003366; text-transform:uppercase;">Your Score</div>
+                </div>
+
+                <!-- Stats boxes -->
+                <div style="flex:1;">
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-val" style="color:#003366;">{{ stats.total }}</div>
+                            <div class="stat-label">Total Questions</div>
+                        </div>
+                        <div class="stat-box green">
+                            <div class="stat-val">{{ stats.attempted }}</div>
+                            <div class="stat-label">Attempted ✓</div>
+                        </div>
+                        <div class="stat-box orange">
+                            <div class="stat-val">{{ stats.expired }}</div>
+                            <div class="stat-label">Time Expired ⏰</div>
+                        </div>
+                        <div class="stat-box gray">
+                            <div class="stat-val">{{ stats.unattempted }}</div>
+                            <div class="stat-label">Not Attempted</div>
+                        </div>
+                    </div>
+
+                    <div class="highlights">
+                        <div class="highlight-box">
+                            <div class="hl-label">⏱ Average Time</div>
+                            <div class="hl-val">{{ stats.avg_time }} seconds / question</div>
+                        </div>
+                        {% if stats.fastest %}
+                        <div class="highlight-box">
+                            <div class="hl-label">⚡ Fastest Answer</div>
+                            <div class="hl-val">Q{{ stats.fastest[0] }} — answered in {{ stats.fastest[1] }}s</div>
+                        </div>
+                        {% endif %}
+                        {% if stats.slowest %}
+                        <div class="highlight-box">
+                            <div class="hl-label">🐢 Slowest Answer</div>
+                            <div class="hl-val">Q{{ stats.slowest[0] }} — answered in {{ stats.slowest[1] }}s</div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <h5>📋 Question-by-Question Breakdown</h5>
+            <div style="max-height:420px; overflow-y:auto; border-radius:10px; border:1px solid #e0e0e0;">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th style="width:50px;">Q#</th>
+                            <th>Question</th>
+                            <th>Your Answer</th>
+                            <th style="width:90px;">Time Taken</th>
+                            <th style="width:110px;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in table_rows %}
+                        <tr>
+                            <td><strong>Q{{ row.q_num }}</strong></td>
+                            <td style="color:#333;">{{ row.question_short }}</td>
+                            <td style="color:#555;">{{ row.your_answer }}</td>
+                            <td style="text-align:center;">
+                                {% if row.time_taken is not none %}
+                                    <span style="font-weight:700; color:#003366;">{{ row.time_taken }}s</span>
+                                {% else %}
+                                    <span style="color:#aaa;">—</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if row.status == 'attempted' %}
+                                    <span class="status-badge status-attempted">✓ Attempted</span>
+                                {% elif row.status == 'expired' %}
+                                    <span class="status-badge status-expired">⏰ Expired</span>
+                                {% else %}
+                                    <span class="status-badge status-unattempted">— Skipped</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="{{ url_for('student.dashboard') }}" class="btn-restart" style="background-color: #64748b;">
+                <i class="fa-solid fa-house me-1"></i> Dashboard
+            </a>
+            <a href="{{ url_for('student.assessment_start') }}" class="btn-restart">
+                🔄 Restart Quiz
+            </a>
+            <a href="{{ url_for('student.export_results') }}" class="btn-export">
+                📥 Export Results (.txt)
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="instructions-card bg-white p-5 rounded-4 shadow-sm">
+                <h1 class="display-6 fw-bold mb-4">Assessment Instructions</h1>
+                
+                <div class="info-box bg-light p-4 rounded-3 mb-4">
+                    <h5 class="fw-bold"><i class="bi bi-info-circle me-2"></i>Please Read Carefully</h5>
+                    <p class="mb-0">This portal contains a battery of 4 psychological assessments. They are designed to help our counsellors understand your mental well-being and provide better support.</p>
+                </div>
+
+                <div class="steps-list mb-5">
+                    <div class="step-item d-flex mb-4">
+                        <div class="step-num bg-teal text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="min-width: 40px; height: 40px;">1</div>
+                        <div>
+                            <h6 class="fw-bold">Answer Honestly</h6>
+                            <p class="text-muted small">There are no right or wrong answers. Choose the option that best describes your feelings or situation.</p>
+                        </div>
+                    </div>
+                    <div class="step-item d-flex mb-4">
+                        <div class="step-num bg-teal text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="min-width: 40px; height: 40px;">2</div>
+                        <div>
+                            <h6 class="fw-bold">Compulsory Questions</h6>
+                            <p class="text-muted small">All questions are compulsory. You must select an option for each question before you can proceed to the next one.</p>
+                        </div>
+                    </div>
+                    <div class="step-item d-flex mb-4">
+                        <div class="step-num bg-teal text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="min-width: 40px; height: 40px;">3</div>
+                        <div>
+                            <h6 class="fw-bold">Sequential Flow</h6>
+                            <p class="text-muted small">You cannot go back to previous questions. Once an answer is submitted, it is final.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="{{ url_for('student.assessment_start') }}" class="btn btn-teal btn-lg px-5 py-3 rounded-pill">
+                        Start Assessment
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-teal { background-color: #20c997 !important; }
+    .btn-teal { background-color: #20c997; color: white; border: none; }
+    .btn-teal:hover { background-color: #17a589; color: white; }
+    .rounded-4 { border-radius: 1.5rem !important; }
+</style>
+{% endblock %}

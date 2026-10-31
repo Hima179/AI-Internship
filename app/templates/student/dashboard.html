@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-card bg-white p-4 rounded-4 shadow-sm mb-4">
+                <div class="text-center mb-4">
+                    <div class="avatar bg-teal text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
+                        {{ current_user.name[0] }}
+                    </div>
+                    <h3 class="fw-bold">{{ current_user.name }}</h3>
+                    <p class="text-muted">{{ profile.course }} · Year {{ profile.year_of_study }}</p>
+                </div>
+                <hr>
+                <div class="profile-details">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">UAi ID</span>
+                        <span class="fw-bold">{{ current_user.uai_id }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Department</span>
+                        <span class="fw-bold">{{ profile.department }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Status</span>
+                        {% if latest_session and latest_session.status == 'completed' %}
+                        <span class="badge bg-success">Assessment Done</span>
+                        {% else %}
+                        <span class="badge bg-warning">Assessment Pending</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="dashboard-main bg-white p-5 rounded-4 shadow-sm h-100">
+                <h2 class="fw-bold mb-4">Welcome to Your Portal</h2>
+                <p class="text-muted fs-5 mb-5">Your mental health is our priority. Please complete the assigned assessments so we can better support your journey.</p>
+                
+                <div class="assessment-status-box p-4 border rounded-4 bg-light mb-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="fw-bold mb-0">Current Assessment</h4>
+                        {% if latest_session and latest_session.status == 'completed' %}
+                        <span class="text-success fw-bold"><i class="bi bi-check-circle-fill me-2"></i>All Complete</span>
+                        {% else %}
+                        <span class="text-primary fw-bold">Ready to Start</span>
+                        {% endif %}
+                    </div>
+                    <p class="text-muted">This battery includes Section 1, Section 2, Section 3, Section 4, Section 5, and Section 6.</p>
+                    
+                    {% if latest_session and latest_session.status == 'completed' %}
+                    <div class="alert alert-success mb-3">
+                        You have already completed the assessment. Your results are being reviewed.
+                    </div>
+                    <a href="{{ url_for('student.complete') }}" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill mt-2">
+                        <i class="fa-solid fa-chart-column me-2"></i> View My Results Summary
+                    </a>
+                    {% else %}
+                    <a href="{{ url_for('student.instructions') }}" class="btn btn-teal btn-lg px-5 py-3 rounded-pill mt-3">
+                        Enter Assessment Room
+                    </a>
+                    {% endif %}
+                </div>
+
+                <div class="support-box p-4 border rounded-4">
+                    <h5 class="fw-bold mb-3">Assigned Counsellor</h5>
+                    {% if profile.assigned_counsellor %}
+                    <div class="d-flex align-items-center">
+                        <div class="counsellor-avatar bg-purple text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                            {{ profile.assigned_counsellor.name[0] }}
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-0">{{ profile.assigned_counsellor.name }}</h6>
+                            <p class="text-muted small mb-0">{{ profile.assigned_counsellor.email }}</p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p class="text-muted mb-0">A counsellor will be assigned to you shortly after your assessment.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-teal { background-color: #20c997 !important; }
+    .bg-purple { background-color: #6f42c1 !important; }
+    .btn-teal { background-color: #20c997; color: white; border: none; }
+    .btn-teal:hover { background-color: #17a589; color: white; }
+    .rounded-4 { border-radius: 1.5rem !important; }
+</style>
+{% endblock %}

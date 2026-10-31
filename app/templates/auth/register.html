@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card auth-card-register">
+        <div class="text-center mb-4">
+            <h2 class="mb-1">Create Account</h2>
+            <p class="text-muted small">Join our assessment portal</p>
+        </div>
+
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" for="uai_id">UAI ID</label>
+                    {{ form.uai_id(class="form-control" + (" is-invalid" if form.uai_id.errors else ""), placeholder="UAI-12345") }}
+                    {% if form.uai_id.errors %}
+                        {% for error in form.uai_id.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" for="name">Full Name</label>
+                    {{ form.name(class="form-control" + (" is-invalid" if form.name.errors else ""), placeholder="John Doe") }}
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="email">Email Address</label>
+                {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else ""), placeholder="email@example.com") }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label d-block mb-3">Select Your Role</label>
+                <div class="role-selector">
+                    {% for subfield in form.role %}
+                        <div class="role-option">
+                            {{ subfield }}
+                            <label class="role-label" for="{{ subfield.id }}">
+                                {% if subfield.data == 'student' %}
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                {% elif subfield.data == 'counsellor' %}
+                                    <i class="fa-solid fa-user-doctor"></i>
+                                {% elif subfield.data == 'faculty' %}
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                {% else %}
+                                    <i class="fa-solid fa-user-gear"></i>
+                                {% endif %}
+                                <span>{{ subfield.label.text }}</span>
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if form.role.errors %}
+                    {% for error in form.role.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else ""), placeholder="••••••••", id="password-input") }}
+                    <div class="strength-meter">
+                        <div id="strength-bar" class="strength-bar"></div>
+                    </div>
+                    <div id="strength-text" class="strength-text"></div>
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label class="form-label" for="confirm_password">Confirm Password</label>
+                    {{ form.confirm_password(class="form-control" + (" is-invalid" if form.confirm_password.errors else ""), placeholder="••••••••") }}
+                    {% if form.confirm_password.errors %}
+                        {% for error in form.confirm_password.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                {{ form.submit(class="btn btn-teal", value="Create Account") }}
+            </div>
+        </form>
+
+        <div class="text-center mt-4">
+            <p class="small text-muted mb-0">Already have account? <a href="{{ url_for('auth.login') }}" class="text-teal fw-bold text-decoration-none">Login</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.getElementById('password-input').addEventListener('input', function() {
+        const password = this.value;
+        const bar = document.getElementById('strength-bar');
+        const text = document.getElementById('strength-text');
+        let strength = 0;
+        
+        if (password.length > 6) strength++;
+        if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+        if (password.match(/[0-9]/)) strength++;
+        if (password.match(/[^a-zA-Z0-9]/)) strength++;
+
+        bar.style.width = (strength * 25) + '%';
+        
+        if (strength === 0) {
+            bar.style.backgroundColor = '#eee';
+            text.innerText = '';
+        } else if (strength <= 2) {
+            bar.style.backgroundColor = '#ff6b6b';
+            text.innerText = 'Weak';
+            text.style.color = '#ff6b6b';
+        } else if (strength === 3) {
+            bar.style.backgroundColor = '#ffd93d';
+            text.innerText = 'Medium';
+            text.style.color = '#ffd93d';
+        } else {
+            bar.style.backgroundColor = '#4ECDC4';
+            text.innerText = 'Strong';
+            text.style.color = '#4ECDC4';
+        }
+    });
+</script>
+{% endblock %}

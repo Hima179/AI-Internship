@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="UAI Counsellor Insights Dashboard - Student Well-Being Monitoring & Early Support. Secure clinical records, real-time risk alerts, and AI-driven well-being trends for counselors." />
+    <title>Counsellor Insights Dashboard | UAi</title>
+    
+    <!-- Inject dynamic Flask SQLite database data into React globally on mount -->
+    <script>
+      window.__FLASK_KPIS__ = {{ kpis | tojson | safe }};
+      window.__FLASK_CHART_DATA__ = {{ chart_data | tojson | safe }};
+      window.__FLASK_FLAGGED_STUDENTS__ = {{ flagged_students | tojson | safe }};
+    </script>
+
+    <!-- React App production bundle resources -->
+    <script type="module" crossorigin src="{{ url_for('static', filename='js/index-Dj4mXsiL.js') }}"></script>
+    <link rel="stylesheet" crossorigin href="{{ url_for('static', filename='css/index-DutyUe7l.css') }}">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

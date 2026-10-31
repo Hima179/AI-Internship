@@ -1,0 +1,399 @@
+{% extends 'base.html' %}
+
+{% block title %}Survey - UAi Survey Portal{% endblock %}
+
+{% block extra_css %}
+<style>
+    .survey-layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    /* Top Header */
+    .top-header {
+        background: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .header-logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 700;
+        color: var(--uai-blue);
+        font-size: 1.25rem;
+    }
+    .header-logo span {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-weight: 400;
+        display: block;
+    }
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--uai-blue);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+    .user-info {
+        text-align: right;
+    }
+    .user-info strong {
+        display: block;
+        color: var(--text-main);
+    }
+    .user-info small {
+        color: var(--text-muted);
+    }
+
+    /* Main Content Area */
+    .main-content {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Stepper */
+    .stepper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    .stepper::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: 30px;
+        right: 30px;
+        height: 2px;
+        background: var(--border-color);
+        z-index: 0;
+    }
+    .step {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--bg-color);
+        padding: 0 10px;
+    }
+    .step-circle {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: white;
+        border: 2px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: var(--text-muted);
+    }
+    .step.completed .step-circle {
+        background: var(--uai-green);
+        border-color: var(--uai-green);
+        color: white;
+    }
+    .step.active .step-circle {
+        background: var(--uai-blue);
+        border-color: var(--uai-blue);
+        color: white;
+    }
+    .step-label {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+    .step.active .step-label {
+        color: var(--uai-blue);
+        font-weight: 600;
+    }
+
+    /* Student Banner */
+    .student-banner {
+        background: white;
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+    }
+    .info-item {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    .info-icon {
+        color: var(--uai-green);
+    }
+    .info-item div strong {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.25rem;
+    }
+    .info-item div span {
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    /* Survey Content Grid */
+    .survey-grid {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 2rem;
+    }
+
+    .survey-card {
+        background: white;
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+    }
+
+    .survey-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .question-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    .question-text {
+        flex: 1;
+        font-size: 0.95rem;
+        padding-right: 2rem;
+    }
+    .question-slider {
+        width: 250px;
+        flex-shrink: 0;
+    }
+
+    .questions-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .category-title {
+        color: var(--uai-blue);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Right Panel */
+    .mascot-panel {
+        background: #f8fafc;
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        text-align: center;
+        border: 1px dashed var(--border-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .mascot-panel img {
+        max-width: 200px;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Bottom Actions */
+    .action-bar {
+        background: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--border-color);
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="survey-layout">
+    <header class="top-header">
+        <div class="header-logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div>
+                UAi Student Survey Portal
+                <span>Your Voice. Our Commitment. Student Well-Being for All.</span>
+            </div>
+        </div>
+        <div class="user-profile">
+            <div class="user-info">
+                <strong>{{ current_user.username }}</strong>
+                <small>Student</small>
+            </div>
+            <div class="avatar">{{ current_user.username[0]|upper }}</div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-muted"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="stepper">
+            <div class="step completed">
+                <div class="step-circle">✓</div>
+                <div class="step-label">Consent</div>
+            </div>
+            <div class="step completed">
+                <div class="step-circle">✓</div>
+                <div class="step-label">Student Details</div>
+            </div>
+            <div class="step active">
+                <div class="step-circle">3</div>
+                <div class="step-label">DASS-21</div>
+            </div>
+            <div class="step">
+                <div class="step-circle">4</div>
+                <div class="step-label">BIS-11</div>
+            </div>
+            <div class="step">
+                <div class="step-circle">5</div>
+                <div class="step-label">Behavioural Risk</div>
+            </div>
+            <div class="step">
+                <div class="step-circle">6</div>
+                <div class="step-label">Review & Submit</div>
+            </div>
+        </div>
+
+        <div class="student-banner">
+            <div class="info-item">
+                <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <div><strong>Student Name</strong><span>{{ current_user.username }}</span></div>
+            </div>
+            <div class="info-item">
+                <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div><strong>Registration ID</strong><span>REG-2025-1042</span></div>
+            </div>
+            <div class="info-item">
+                <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                <div><strong>Course / Program</strong><span>B.Sc. Agriculture</span></div>
+            </div>
+            <div class="info-item">
+                <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <div><strong>Email ID</strong><span>ayesha.khan@uai.edu</span></div>
+            </div>
+        </div>
+
+        <div class="survey-grid">
+            <div class="survey-card">
+                <div class="survey-header">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--uai-blue)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    <div>
+                        <h2 style="font-size: 1.25rem; margin-bottom:0;">DASS-21 – Depression Anxiety Stress Scales</h2>
+                        <small style="color: var(--text-muted);">Instructions: Rate how much each statement applied to you over the past 1 week.</small>
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-color); padding: 10px 20px; border-radius: var(--radius-md); margin-bottom: 2rem; display: flex; gap: 2rem; font-size: 0.875rem; font-weight: 600; color: var(--uai-blue);">
+                    <span>0 = Never</span>
+                    <span>1 = Sometimes</span>
+                    <span>2 = Often</span>
+                    <span>3 = Almost Always</span>
+                </div>
+
+                <form action="#" method="POST" id="surveyForm">
+                    <div class="questions-container">
+                        <div>
+                            <div class="category-title">Depression</div>
+                            {% for i in range(1, 8) %}
+                            <div class="question-row">
+                                <div class="question-text">{{ i }}. I felt low or sad without clear reason</div>
+                                <div class="question-slider">
+                                    <input type="range" name="q{{ i }}" class="custom-range" min="0" max="3" value="0">
+                                    <div class="range-labels">
+                                        <span>0</span><span>1</span><span>2</span><span>3</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                            <div class="category-title" style="margin-top: 2rem;">Anxiety</div>
+                            {% for i in range(8, 15) %}
+                            <div class="question-row">
+                                <div class="question-text">{{ i }}. I felt nervous or on edge</div>
+                                <div class="question-slider">
+                                    <input type="range" name="q{{ i }}" class="custom-range" min="0" max="3" value="0">
+                                    <div class="range-labels">
+                                        <span>0</span><span>1</span><span>2</span><span>3</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <div class="category-title">Stress</div>
+                            {% for i in range(15, 22) %}
+                            <div class="question-row">
+                                <div class="question-text">{{ i }}. I found it hard to relax</div>
+                                <div class="question-slider">
+                                    <input type="range" name="q{{ i }}" class="custom-range" min="0" max="3" value="0">
+                                    <div class="range-labels">
+                                        <span>0</span><span>1</span><span>2</span><span>3</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="mascot-panel">
+                <img src="{{ url_for('static', filename='images/mascot.png') }}" alt="Support Mascot">
+                <div style="background: white; padding: 1rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); width: 100%;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: var(--uai-blue); margin-bottom: 0.5rem; font-weight: 600;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        Answer honestly.
+                    </div>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Your responses help us understand your well-being.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="action-bar">
+        <a href="{{ url_for('survey.consent') }}" class="btn btn-outline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Previous</a>
+        <button class="btn btn-outline" style="color: var(--uai-blue); border-color: var(--uai-blue);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Save Draft</button>
+        <button class="btn btn-primary" onclick="document.getElementById('surveyForm').submit()">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+</div>
+{% endblock %}

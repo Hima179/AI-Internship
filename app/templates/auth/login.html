@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card auth-card-login">
+        <div class="text-center mb-4">
+            <img src="{{ url_for('static', filename='img/uai_logo.png') }}" alt="UAI Logo" style="max-height:90px; margin-bottom:12px;">
+            <h2 class="mb-1">
+                {% if request.args.get('role') == 'student' %}
+                    Student Portal
+                {% elif request.args.get('role') == 'counsellor' %}
+                    Counsellor Portal
+                {% elif request.args.get('role') == 'admin' %}
+                    Admin Portal
+                {% else %}
+                    Welcome Back
+                {% endif %}
+            </h2>
+            <p class="text-muted small">Please sign in to continue</p>
+        </div>
+
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            
+            <div class="mb-3">
+                <label class="form-label" for="uai_id">Username / Email ID / UAI ID</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-id-card"></i></span>
+                    {{ form.uai_id(class="form-control" + (" is-invalid" if form.uai_id.errors else ""), placeholder="Enter Email or UAI ID") }}
+                </div>
+                {% if form.uai_id.errors %}
+                    {% for error in form.uai_id.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label" for="password">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                    {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else ""), placeholder="••••••••") }}
+                </div>
+                {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="d-grid gap-2">
+                {{ form.submit(class="btn btn-teal") }}
+            </div>
+        </form>
+
+        <div class="text-center mt-4">
+            <p class="small text-muted mb-0">New here? <a href="{{ url_for('auth.register') }}" class="text-teal fw-bold text-decoration-none">Register</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

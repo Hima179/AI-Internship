@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}Consent Form - UAi Survey Portal{% endblock %}
+
+{% block extra_css %}
+<style>
+    .consent-page-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: var(--bg-color);
+        padding: 2rem;
+    }
+    .consent-card {
+        background: white;
+        border-radius: var(--radius-xl);
+        max-width: 600px;
+        padding: 2.5rem;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+    }
+    .consent-icon {
+        width: 60px;
+        height: 60px;
+        background: #e6f4ea;
+        color: var(--uai-green);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem auto;
+    }
+    .consent-card h2 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-main);
+    }
+    .consent-list {
+        list-style: none;
+        margin-bottom: 2rem;
+    }
+    .consent-list li {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+    }
+    .consent-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: white;
+        background: var(--uai-green);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .checkbox-wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+    }
+    .checkbox-wrapper input {
+        margin-top: 0.3rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        accent-color: var(--uai-blue);
+    }
+    .checkbox-wrapper label {
+        font-size: 0.95rem;
+        color: var(--text-main);
+    }
+    .consent-actions {
+        display: flex;
+        gap: 1rem;
+    }
+    .consent-actions .btn {
+        flex: 1;
+        padding: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="consent-page-wrapper">
+    <div class="consent-card">
+        <div class="consent-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+        </div>
+        <h2>Informed Consent Form</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem; text-align: center;">Please read the information below carefully before deciding to participate in this survey.</p>
+        
+        <ul class="consent-list">
+            <li>Participation in this survey is voluntary. You may choose not to participate or may withdraw at any time without any penalty.</li>
+            <li>Your responses will be kept confidential and your identity will not be disclosed in any reports or publications.</li>
+            <li>The data collected will be used only for student well-being support, counselling services, research purposes, and institutional analysis as authorized by UAi.</li>
+            <li>This survey is not a clinical diagnosis. It is designed to understand student well-being and related factors.</li>
+            <li>You may skip any question you do not wish to answer.</li>
+            <li>If your responses indicate severe risk or concern, authorized counselling or support staff may contact you to provide appropriate assistance under ethical safety procedures.</li>
+        </ul>
+
+        <form action="{{ url_for('survey.survey') }}" method="GET">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="consent" required>
+                <label for="consent">I have read and understood the information above and I consent to participate in this survey.</label>
+            </div>
+            <div class="consent-actions">
+                <a href="{{ url_for('auth.login') }}" class="btn btn-outline">Cancel / Exit</a>
+                <button type="submit" class="btn btn-primary">I Agree & Continue <svg style="margin-left:8px" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,691 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Premium Stepper Progress Bar -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-11 col-lg-10">
+            <div class="steps-container">
+                <div class="step-line-bg">
+                    <div class="step-line-fill" style="width: 33%;"></div>
+                </div>
+                
+                <div class="step-node completed">
+                    <div class="step-circle">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <span class="step-text">Consent</span>
+                </div>
+                
+                <div class="step-node active active-pulse">
+                    <div class="step-circle">2</div>
+                    <span class="step-text">Details</span>
+                </div>
+                
+                <div class="step-node">
+                    <div class="step-circle">3</div>
+                    <span class="step-text">Instructions</span>
+                </div>
+                
+                <div class="step-node">
+                    <div class="step-circle">4</div>
+                    <span class="step-text">Assessment</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Details Card -->
+    <div class="row justify-content-center">
+        <div class="col-md-11 col-lg-10">
+            <div class="smart-card">
+                <div class="smart-card-header text-center">
+                    <span class="pill-badge mb-3">STEP 2 OF 4 · PROFILE SETUP</span>
+                    <h2 class="fw-extrabold text-navy mb-2">Personal Details</h2>
+                    <p class="text-secondary-muted mb-0">Help us customize your assessment experience and resources</p>
+                </div>
+                
+                <div class="card-body px-4 px-md-5 pb-5">
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+
+                        <!-- Hidden fields to sync with WTForms -->
+                        <div class="d-none">
+                            {{ form.gender }}
+                            {{ form.year_of_study }}
+                            {% for subfield in form.previous_counselling %}
+                                {{ subfield }}
+                            {% endfor %}
+                            {% for subfield in form.mental_health_diagnosis %}
+                                {{ subfield }}
+                            {% endfor %}
+                        </div>
+
+                        <div class="row g-4">
+                            <!-- Left Column: Primary Fields -->
+                            <div class="col-md-6 border-end-md pe-md-4">
+                                <h5 class="section-title mb-4"><i class="fa-solid fa-circle-user me-2"></i>Academic Info</h5>
+                                
+                                <!-- Full Name Input -->
+                                <div class="mb-4">
+                                    {{ form.name.label(class="form-label") }}
+                                    <div class="input-icon-group">
+                                        {{ form.name(class="form-control" + (" is-invalid" if form.name.errors else ""), placeholder="Enter your full name") }}
+                                        <i class="fa-solid fa-signature"></i>
+                                    </div>
+                                    {% if form.name.errors %}
+                                        {% for error in form.name.errors %}
+                                            <div class="error-message">{{ error }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <!-- Age & Phone Number side-by-side -->
+                                <div class="row g-3">
+                                    <div class="col-sm-5 mb-4">
+                                        {{ form.age.label(class="form-label") }}
+                                        <div class="input-icon-group">
+                                            {{ form.age(class="form-control" + (" is-invalid" if form.age.errors else ""), placeholder="Age", min="16", max="40") }}
+                                            <i class="fa-solid fa-calendar-day"></i>
+                                        </div>
+                                        {% if form.age.errors %}
+                                            {% for error in form.age.errors %}
+                                                <div class="error-message">{{ error }}</div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-sm-7 mb-4">
+                                        {{ form.phone.label(class="form-label") }}
+                                        <div class="input-icon-group">
+                                            {{ form.phone(class="form-control" + (" is-invalid" if form.phone.errors else ""), placeholder="+91 XXXXX XXXXX") }}
+                                            <i class="fa-solid fa-phone"></i>
+                                        </div>
+                                        {% if form.phone.errors %}
+                                            {% for error in form.phone.errors %}
+                                                <div class="error-message">{{ error }}</div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <!-- Department select -->
+                                <div class="mb-4">
+                                    {{ form.department.label(class="form-label") }}
+                                    <div class="input-icon-group">
+                                        {{ form.department(class="form-select" + (" is-invalid" if form.department.errors else "")) }}
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    </div>
+                                    {% if form.department.errors %}
+                                        {% for error in form.department.errors %}
+                                            <div class="error-message">{{ error }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <!-- Year of study custom chips -->
+                                <div class="mb-4">
+                                    <label class="form-label">Year of Study</label>
+                                    <div class="d-flex gap-2 justify-content-between">
+                                        <div class="year-chip" data-val="1" onclick="selectYear(1, this)">1st Year</div>
+                                        <div class="year-chip" data-val="2" onclick="selectYear(2, this)">2nd Year</div>
+                                        <div class="year-chip" data-val="3" onclick="selectYear(3, this)">3rd Year</div>
+                                        <div class="year-chip" data-val="4" onclick="selectYear(4, this)">4th Year</div>
+                                    </div>
+                                    {% if form.year_of_study.errors %}
+                                        {% for error in form.year_of_study.errors %}
+                                            <div class="error-message">{{ error }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Right Column: Interactive Selectors -->
+                            <div class="col-md-6 ps-md-4">
+                                <h5 class="section-title mb-4"><i class="fa-solid fa-sliders me-2"></i>Personal Context</h5>
+
+                                <!-- Gender Selection Grid -->
+                                <div class="mb-4">
+                                    <label class="form-label mb-2">Gender Identity</label>
+                                    <div class="row g-2">
+                                        <div class="col-6 col-sm-3 col-md-6 col-lg-3">
+                                            <div class="selection-card gender-card male" data-val="male" onclick="selectGender('male', this)">
+                                                <i class="fa-solid fa-mars text-primary mb-2 fs-5"></i>
+                                                <div class="selection-label">Male</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 col-md-6 col-lg-3">
+                                            <div class="selection-card gender-card female" data-val="female" onclick="selectGender('female', this)">
+                                                <i class="fa-solid fa-venus text-danger mb-2 fs-5"></i>
+                                                <div class="selection-label">Female</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 col-md-6 col-lg-3">
+                                            <div class="selection-card gender-card nonbinary" data-val="non-binary" onclick="selectGender('non-binary', this)">
+                                                <i class="fa-solid fa-genderless text-warning mb-2 fs-5"></i>
+                                                <div class="selection-label">Other</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 col-md-6 col-lg-3">
+                                            <div class="selection-card gender-card prefernottosay" data-val="prefer_not_to_say" onclick="selectGender('prefer_not_to_say', this)">
+                                                <i class="fa-solid fa-user-slash text-secondary mb-2 fs-5"></i>
+                                                <div class="selection-label">Skip</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if form.gender.errors %}
+                                        {% for error in form.gender.errors %}
+                                            <div class="error-message">{{ error }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <!-- Previous Counselling -->
+                                <div class="mb-4">
+                                    <label class="form-label mb-2">Have you ever attended counselling before?</label>
+                                    <div class="row g-3">
+                                        <div class="col-6">
+                                            <div class="selection-card counsel-card counsel-yes" data-val="yes" onclick="selectCounselling('yes', this)">
+                                                <i class="fa-solid fa-comments text-success mb-2 fs-4"></i>
+                                                <div class="selection-label">Yes, I have</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="selection-card counsel-card counsel-no" data-val="no" onclick="selectCounselling('no', this)">
+                                                <i class="fa-solid fa-comment-slash text-secondary mb-2 fs-4"></i>
+                                                <div class="selection-label">No, first time</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if form.previous_counselling.errors %}
+                                        {% for error in form.previous_counselling.errors %}
+                                            <div class="error-message">{{ error }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <!-- Diagnosed Mental Health Diagnosis -->
+                                <div class="mb-4">
+                                    <label class="form-label mb-2">Do you have any previously diagnosed mental health conditions?</label>
+                                    <div class="row g-2">
+                                        <div class="col-4">
+                                            <div class="selection-card diag-card diag-yes" data-val="yes" onclick="selectDiagnosis('yes', this)">
+                                                <i class="fa-solid fa-heart-pulse text-warning mb-2 fs-4"></i>
+                                                <div class="selection-label">Yes</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="selection-card diag-card diag-no" data-val="no" onclick="selectDiagnosis('no', this)">
+                                                <i class="fa-solid fa-shield-heart text-success mb-2 fs-4"></i>
+                                                <div class="selection-label">No</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="selection-card diag-card prefernottosay" data-val="prefer_not_to_say" onclick="selectDiagnosis('prefer_not_to_say', this)">
+                                                <i class="fa-solid fa-eye-slash text-secondary mb-2 fs-4"></i>
+                                                <div class="selection-label">Skip</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if form.mental_health_diagnosis.errors %}
+                                        {% for error in form.mental_health_diagnosis.errors %}
+                                            <div class="error-message">{{ error }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn btn-submit-premium px-5 py-3">
+                                Save & Continue <i class="fa-solid fa-arrow-right-long ms-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Premium Stylesheet Customization -->
+<style>
+    /* Main Layout */
+    body {
+        background-color: #f3f6fa !important;
+        font-family: 'Nunito', 'Inter', sans-serif;
+    }
+
+    .smart-card {
+        background: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.01);
+        overflow: hidden;
+    }
+
+    .smart-card-header {
+        padding: 40px 40px 20px 40px;
+    }
+
+    .text-navy {
+        color: #1a3a6b !important;
+    }
+
+    .fw-extrabold {
+        font-weight: 800;
+    }
+
+    .pill-badge {
+        display: inline-block;
+        background-color: rgba(26, 58, 107, 0.08);
+        color: #1a3a6b;
+        font-weight: 700;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        padding: 6px 16px;
+        border-radius: 50px;
+    }
+
+    .section-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1a3a6b;
+        border-bottom: 2px solid rgba(26, 58, 107, 0.08);
+        padding-bottom: 10px;
+    }
+
+    .text-secondary-muted {
+        color: #64748b;
+        font-size: 15px;
+    }
+
+    /* Stepper Styling */
+    .steps-container {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .step-node {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .step-circle {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 2px solid #cbd5e1;
+        color: #94a3b8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 15px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+    }
+
+    .step-node.completed .step-circle {
+        background: #10b981;
+        border-color: #10b981;
+        color: #ffffff;
+    }
+
+    .step-node.active .step-circle {
+        background: #1a3a6b;
+        border-color: #1a3a6b;
+        color: #ffffff;
+        box-shadow: 0 0 0 5px rgba(26, 58, 107, 0.12);
+    }
+
+    .step-node.active-pulse .step-circle {
+        animation: pulseRing 2s infinite;
+    }
+
+    @keyframes pulseRing {
+        0% { box-shadow: 0 0 0 0 rgba(26, 58, 107, 0.3); }
+        70% { box-shadow: 0 0 0 8px rgba(26, 58, 107, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(26, 58, 107, 0); }
+    }
+
+    .step-text {
+        margin-top: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #64748b;
+        transition: color 0.3s;
+    }
+
+    .step-node.active .step-text {
+        color: #1a3a6b;
+        font-weight: 700;
+    }
+
+    .step-node.completed .step-text {
+        color: #10b981;
+    }
+
+    .step-line-bg {
+        position: absolute;
+        top: 22px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: #cbd5e1;
+        z-index: 1;
+    }
+
+    .step-line-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #10b981 50%, #1a3a6b 100%);
+        transition: width 0.5s ease;
+    }
+
+    /* Input Icon Styling */
+    .form-label {
+        font-size: 14px;
+        font-weight: 700;
+        color: #475569;
+        margin-bottom: 8px;
+    }
+
+    .input-icon-group {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .input-icon-group i {
+        position: absolute;
+        left: 18px;
+        color: #94a3b8;
+        font-size: 16px;
+        transition: color 0.3s;
+        pointer-events: none;
+    }
+
+    .input-icon-group .form-control,
+    .input-icon-group .form-select {
+        padding-left: 48px;
+        height: 52px;
+        border-radius: 12px;
+        border: 2px solid #e2e8f0;
+        font-size: 15px;
+        color: #1e293b;
+        font-weight: 600;
+        transition: all 0.25s ease;
+    }
+
+    .input-icon-group .form-control::placeholder {
+        color: #cbd5e1;
+        font-weight: 500;
+    }
+
+    .input-icon-group .form-control:focus,
+    .input-icon-group .form-select:focus {
+        border-color: #1a3a6b;
+        box-shadow: 0 0 0 5px rgba(26, 58, 107, 0.08);
+        outline: none;
+    }
+
+    .input-icon-group .form-control:focus + i,
+    .input-icon-group .form-select:focus + i {
+        color: #1a3a6b;
+    }
+
+    /* Year Selection Chips */
+    .year-chip {
+        flex: 1;
+        background: #ffffff;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 12px 6px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 700;
+        color: #64748b;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        user-select: none;
+    }
+
+    .year-chip:hover {
+        border-color: #cbd5e1;
+        color: #475569;
+    }
+
+    .year-chip.active {
+        border-color: #1a3a6b;
+        background-color: #1a3a6b;
+        color: #ffffff;
+        box-shadow: 0 6px 15px rgba(26, 58, 107, 0.15);
+    }
+
+    /* Interactive Selection Cards */
+    .selection-card {
+        background: #ffffff;
+        border: 2px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 16px 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        height: 90px;
+    }
+
+    .selection-card:hover {
+        border-color: #cbd5e1;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.03);
+    }
+
+    .selection-card.active {
+        border-color: #1a3a6b;
+        background-color: #f1f6fb;
+        box-shadow: 0 8px 20px rgba(26, 58, 107, 0.06);
+    }
+
+    .selection-card.active.male {
+        border-color: #3b82f6;
+        background-color: #eff6ff;
+    }
+    .selection-card.active.male i { color: #3b82f6 !important; }
+
+    .selection-card.active.female {
+        border-color: #ec4899;
+        background-color: #fdf2f8;
+    }
+    .selection-card.active.female i { color: #ec4899 !important; }
+
+    .selection-card.active.nonbinary {
+        border-color: #a855f7;
+        background-color: #faf5ff;
+    }
+    .selection-card.active.nonbinary i { color: #a855f7 !important; }
+
+    .selection-card.active.prefernottosay {
+        border-color: #64748b;
+        background-color: #f8fafc;
+    }
+    .selection-card.active.prefernottosay i { color: #64748b !important; }
+
+    .selection-card.active.counsel-yes,
+    .selection-card.active.diag-no {
+        border-color: #10b981;
+        background-color: #ecfdf5;
+    }
+    .selection-card.active.counsel-yes i,
+    .selection-card.active.diag-no i { color: #10b981 !important; }
+
+    .selection-card.active.counsel-no,
+    .selection-card.active.diag-yes {
+        border-color: #f97316;
+        background-color: #fff7ed;
+    }
+    .selection-card.active.counsel-no i,
+    .selection-card.active.diag-yes i { color: #f97316 !important; }
+
+    .selection-label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #475569;
+        margin-top: 2px;
+    }
+
+    .selection-card.active .selection-label {
+        color: #1a3a6b;
+    }
+
+    /* Submit Button */
+    .btn-submit-premium {
+        background: linear-gradient(135deg, #1a3a6b 0%, #0c2346 100%);
+        color: #ffffff;
+        border: none;
+        padding: 16px 48px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        box-shadow: 0 10px 20px rgba(26, 58, 107, 0.15);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .btn-submit-premium:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(26, 58, 107, 0.22);
+        filter: brightness(1.1);
+        color: #ffffff;
+    }
+    
+    .btn-submit-premium:active {
+        transform: translateY(0);
+    }
+
+    /* Validation Errors */
+    .error-message {
+        color: #ef4444;
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .error-message::before {
+        content: "\f071";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+    }
+
+    .is-invalid {
+        border-color: #ef4444 !important;
+    }
+
+    /* Columns Divider */
+    .border-end-md {
+        border-right: 2px solid rgba(226, 232, 240, 0.6);
+    }
+
+    @media (max-width: 767px) {
+        .border-end-md {
+            border-right: none;
+            border-bottom: 2px solid rgba(226, 232, 240, 0.6);
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+        }
+    }
+</style>
+
+<!-- Synchronizer Logic -->
+<script>
+    // Sync custom components on mount
+    document.addEventListener("DOMContentLoaded", function () {
+        // Sync Gender Select (hidden) -> Custom Cards
+        const genderSelect = document.getElementById('gender');
+        if (genderSelect && genderSelect.value) {
+            const activeCard = document.querySelector(`.gender-card[data-val="${genderSelect.value}"]`);
+            if (activeCard) activeCard.classList.add('active');
+        }
+
+        // Sync Year Select (hidden) -> Custom Chips
+        const yearSelect = document.getElementById('year_of_study');
+        if (yearSelect && yearSelect.value) {
+            const activeChip = document.querySelector(`.year-chip[data-val="${yearSelect.value}"]`);
+            if (activeChip) activeChip.classList.add('active');
+        }
+
+        // Sync Previous Counselling (hidden radio) -> Custom Cards
+        const counselRadios = document.querySelectorAll('input[name="previous_counselling"]');
+        counselRadios.forEach(radio => {
+            if (radio.checked) {
+                const activeCard = document.querySelector(`.counsel-card[data-val="${radio.value}"]`);
+                if (activeCard) activeCard.classList.add('active');
+            }
+        });
+
+        // Sync Diagnosis (hidden radio) -> Custom Cards
+        const diagRadios = document.querySelectorAll('input[name="mental_health_diagnosis"]');
+        diagRadios.forEach(radio => {
+            if (radio.checked) {
+                const activeCard = document.querySelector(`.diag-card[data-val="${radio.value}"]`);
+                if (activeCard) activeCard.classList.add('active');
+            }
+        });
+    });
+
+    // Helper functions to select and update hidden WTForm inputs
+    function selectGender(val, cardEl) {
+        const genderSelect = document.getElementById('gender');
+        if (genderSelect) {
+            genderSelect.value = val;
+            genderSelect.dispatchEvent(new Event('change'));
+        }
+        document.querySelectorAll('.gender-card').forEach(c => c.classList.remove('active'));
+        cardEl.classList.add('active');
+    }
+
+    function selectYear(val, chipEl) {
+        const yearSelect = document.getElementById('year_of_study');
+        if (yearSelect) {
+            yearSelect.value = val;
+            yearSelect.dispatchEvent(new Event('change'));
+        }
+        document.querySelectorAll('.year-chip').forEach(c => c.classList.remove('active'));
+        chipEl.classList.add('active');
+    }
+
+    function selectCounselling(val, cardEl) {
+        const radio = document.querySelector(`input[name="previous_counselling"][value="${val}"]`);
+        if (radio) {
+            radio.checked = true;
+            radio.dispatchEvent(new Event('change'));
+        }
+        document.querySelectorAll('.counsel-card').forEach(c => c.classList.remove('active'));
+        cardEl.classList.add('active');
+    }
+
+    function selectDiagnosis(val, cardEl) {
+        const radio = document.querySelector(`input[name="mental_health_diagnosis"][value="${val}"]`);
+        if (radio) {
+            radio.checked = true;
+            radio.dispatchEvent(new Event('change'));
+        }
+        document.querySelectorAll('.diag-card').forEach(c => c.classList.remove('active'));
+        cardEl.classList.add('active');
+    }
+</script>
+{% endblock %}

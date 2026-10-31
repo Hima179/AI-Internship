@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar (Reused) -->
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-purple sidebar collapse" style="min-height: 100vh; background-color: #4B0082;">
+            <div class="position-sticky pt-3">
+                <div class="px-3 mb-4"><h4 class="text-white fw-bold">Counsellor Portal</h4></div>
+                <ul class="nav flex-column px-2">
+                    <li class="nav-item mb-2"><a class="nav-link text-white-50 p-3 rounded" href="{{ url_for('counsellor.dashboard') }}"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link active text-white p-3 rounded bg-white bg-opacity-25" href="{{ url_for('counsellor.students') }}"><i class="bi bi-people me-2"></i> My Students</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4 bg-light">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h2">Student Assessment Profile</h1>
+                <a href="{{ url_for('counsellor.export_student', student_id=student.id) }}" class="btn btn-purple text-white">
+                    <i class="bi bi-file-earmark-pdf me-2"></i> Download PDF Report
+                </a>
+            </div>
+
+            <!-- Student Info Card -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar bg-purple text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; font-size: 1.5rem;">
+                                {{ student.name[0] }}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="fw-bold mb-1">{{ student.name }}</h3>
+                            <p class="text-muted mb-0">{{ student.uai_id }} · {{ profile.course }} · Year {{ profile.year_of_study }} · {{ profile.age }}y, {{ profile.gender }}</p>
+                        </div>
+                        <div class="col-auto">
+                            <div class="text-end">
+                                <small class="text-muted d-block mb-1">Overall Risk Level</small>
+                                <span class="badge bg-{{ 'success' if profile.risk_level == 'Normal' else ('warning' if profile.risk_level == 'Mild' else ('orange' if profile.risk_level == 'Moderate' else 'danger')) }} fs-5 px-3 py-2">
+                                    {{ profile.risk_level or 'Normal' }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- DASS-21 Bar Chart -->
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                        <h5 class="fw-bold mb-4">DASS-21 Sub-scale Scores</h5>
+                        <canvas id="dassChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- BFI-44 Radar Chart -->
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                        <h5 class="fw-bold mb-4">BFI-44 Big Five Personality Radar</h5>
+                        <canvas id="bfiChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- EQ & SQ Cards -->
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4" style="background: linear-gradient(135deg, #20c997, #17a589); color: white;">
+                        <h6 class="text-uppercase fw-bold opacity-75">Empathy Quotient (EQ)</h6>
+                        {% set eq_sc = scores|selectattr('assessment.name', 'equalto', 'EQ')|first %}
+                        <div class="display-4 fw-bold">{{ eq_sc.total_score if eq_sc else 'N/A' }}</div>
+                        <p class="mb-0 fw-bold">{{ eq_sc.severity_label if eq_sc else 'Pending' }}</p>
+                    </div>
+                    <div class="card border-0 shadow-sm rounded-4 p-4" style="background: linear-gradient(135deg, #6610f2, #4b0082); color: white;">
+                        <h6 class="text-uppercase fw-bold opacity-75">Systemizing Quotient (SQ)</h6>
+                        {% set sq_sc = scores|selectattr('assessment.name', 'equalto', 'SQ')|first %}
+                        <div class="display-4 fw-bold">{{ sq_sc.total_score if sq_sc else 'N/A' }}</div>
+                        <p class="mb-0 fw-bold">{{ sq_sc.severity_label if sq_sc else 'Pending' }}</p>
+                    </div>
+                </div>
+
+                <!-- Time Analysis -->
+                <div class="col-md-8 mb-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                        <h5 class="fw-bold mb-4">Time per Question (Seconds)</h5>
+                        <canvas id="timeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flag Form -->
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+                <h5 class="fw-bold mb-3">Intervention & Flagging</h5>
+                <form action="{{ url_for('counsellor.flag_student', student_id=student.id) }}" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="mb-3">
+                        <label class="form-label">Reason for Flagging</label>
+                        <textarea name="reason" class="form-control" rows="3" placeholder="Describe why this student requires attention..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Raise Risk Flag</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // DASS-21 Data
+    {% set dass_sc = scores|selectattr('assessment.name', 'equalto', 'DASS-21')|first %}
+    const dassData = {{ dass_sc.category_scores|tojson if dass_sc else '{}' }};
+    new Chart(document.getElementById('dassChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Depression', 'Anxiety', 'Stress'],
+            datasets: [{
+                label: 'Score',
+                data: dassData ? [dassData.depression.score, dassData.anxiety.score, dassData.stress.score] : [0,0,0],
+                backgroundColor: ['#6f42c1', '#20c997', '#fd7e14']
+            }]
+        },
+        options: { scales: { y: { beginAtZero: true } } }
+    });
+
+    // BFI-44 Data
+    {% set bfi_sc = scores|selectattr('assessment.name', 'equalto', 'BFI-44')|first %}
+    const bfiData = {{ bfi_sc.category_scores|tojson if bfi_sc else '{}' }};
+    new Chart(document.getElementById('bfiChart'), {
+        type: 'radar',
+        data: {
+            labels: ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'],
+            datasets: [{
+                label: 'Personality Trait Level',
+                data: bfiData ? [bfiData.openness.score, bfiData.conscientiousness.score, bfiData.extraversion.score, bfiData.agreeableness.score, bfiData.neuroticism.score] : [0,0,0,0,0],
+                borderColor: '#6f42c1',
+                backgroundColor: 'rgba(111, 66, 193, 0.2)'
+            }]
+        },
+        options: { scales: { r: { beginAtZero: true, max: 5 } } }
+    });
+
+    // Time Data
+    new Chart(document.getElementById('timeChart'), {
+        type: 'line',
+        data: {
+            labels: {{ time_labels|tojson }},
+            datasets: [{
+                label: 'Time Taken (s)',
+                data: {{ time_data|tojson }},
+                borderColor: '#20c997',
+                fill: false,
+                tension: 0.1
+            }]
+        }
+    });
+</script>
+
+<style>
+    .btn-purple, .bg-purple { background-color: #6f42c1 !important; }
+    .bg-orange { background-color: #fd7e14 !important; }
+    .rounded-4 { border-radius: 1rem !important; }
+</style>
+{% endblock %}

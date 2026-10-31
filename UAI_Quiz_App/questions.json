@@ -1,0 +1,1802 @@
+[
+  {
+    "id": 1,
+    "question": "Psychology is best defined as the scientific study of:",
+    "options": ["A) The mind and soul", "B) Behavior and mental processes", "C) Human emotions only", "D) Brain chemistry"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Introduction to Psychology"
+  },
+  {
+    "id": 2,
+    "question": "Who is considered the 'Father of Psychology'?",
+    "options": ["A) Sigmund Freud", "B) William James", "C) Wilhelm Wundt", "D) John Watson"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "History of Psychology"
+  },
+  {
+    "id": 3,
+    "question": "Which school of thought focuses on the purpose of conscious experience?",
+    "options": ["A) Structuralism", "B) Functionalism", "C) Behaviorism", "D) Gestalt Psychology"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Schools of Psychology"
+  },
+  {
+    "id": 4,
+    "question": "The unconscious mind is a central concept in which psychological theory?",
+    "options": ["A) Cognitive Theory", "B) Humanistic Theory", "C) Psychoanalytic Theory", "D) Behavioral Theory"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Psychoanalysis"
+  },
+  {
+    "id": 5,
+    "question": "Pavlov's experiment with dogs demonstrated which type of learning?",
+    "options": ["A) Operant Conditioning", "B) Classical Conditioning", "C) Observational Learning", "D) Insight Learning"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Learning"
+  },
+  {
+    "id": 6,
+    "question": "B.F. Skinner is associated with which concept?",
+    "options": ["A) Classical Conditioning", "B) Humanistic Psychology", "C) Operant Conditioning", "D) Gestalt Psychology"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Behavioral Psychology"
+  },
+  {
+    "id": 7,
+    "question": "Maslow's Hierarchy of Needs places which need at the top?",
+    "options": ["A) Safety", "B) Love and Belonging", "C) Esteem", "D) Self-Actualization"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Motivation"
+  },
+  {
+    "id": 8,
+    "question": "Which part of the brain is primarily responsible for emotional responses?",
+    "options": ["A) Cerebellum", "B) Prefrontal Cortex", "C) Amygdala", "D) Hippocampus"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 9,
+    "question": "Short-term memory can typically hold how many items at once?",
+    "options": ["A) 3 plus or minus 1", "B) 7 plus or minus 2", "C) 12 plus or minus 3", "D) 5 plus or minus 1"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Memory"
+  },
+  {
+    "id": 10,
+    "question": "The term 'cognitive dissonance' was introduced by:",
+    "options": ["A) Albert Bandura", "B) Leon Festinger", "C) Aaron Beck", "D) Carl Rogers"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 11,
+    "question": "Which defense mechanism involves reverting to childlike behavior under stress?",
+    "options": ["A) Projection", "B) Repression", "C) Regression", "D) Rationalization"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Defense Mechanisms"
+  },
+  {
+    "id": 12,
+    "question": "The fight-or-flight response is triggered by which nervous system?",
+    "options": ["A) Central Nervous System", "B) Parasympathetic Nervous System", "C) Somatic Nervous System", "D) Sympathetic Nervous System"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 13,
+    "question": "Which psychological disorder is characterized by persistent sadness and loss of interest?",
+    "options": ["A) Schizophrenia", "B) Major Depressive Disorder", "C) Bipolar Disorder", "D) Anxiety Disorder"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 14,
+    "question": "Observational learning theory was proposed by:",
+    "options": ["A) Skinner", "B) Pavlov", "C) Bandura", "D) Piaget"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Learning"
+  },
+  {
+    "id": 15,
+    "question": "Which type of memory stores information about personal experiences?",
+    "options": ["A) Semantic Memory", "B) Procedural Memory", "C) Episodic Memory", "D) Working Memory"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Memory"
+  },
+  {
+    "id": 16,
+    "question": "Piaget's stage where children develop object permanence is:",
+    "options": ["A) Preoperational", "B) Concrete Operational", "C) Formal Operational", "D) Sensorimotor"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Developmental Psychology"
+  },
+  {
+    "id": 17,
+    "question": "Which neurotransmitter is often called the 'feel-good' chemical?",
+    "options": ["A) Acetylcholine", "B) Dopamine", "C) GABA", "D) Serotonin"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 18,
+    "question": "The Rorschach test is an example of which type of personality assessment?",
+    "options": ["A) Objective Test", "B) Projective Test", "C) Behavioral Assessment", "D) Neuropsychological Test"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Personality Assessment"
+  },
+  {
+    "id": 19,
+    "question": "Which approach in psychology focuses on free will and human potential?",
+    "options": ["A) Psychoanalytic", "B) Behavioral", "C) Humanistic", "D) Biological"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Schools of Psychology"
+  },
+  {
+    "id": 20,
+    "question": "Stanley Milgram's famous experiment studied:",
+    "options": ["A) Conformity", "B) Obedience to Authority", "C) Bystander Effect", "D) Group Polarization"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 21,
+    "question": "Which sleep stage is associated with dreaming?",
+    "options": ["A) Stage 1", "B) Stage 2", "C) Stage 3", "D) REM Sleep"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "States of Consciousness"
+  },
+  {
+    "id": 22,
+    "question": "The term 'Id' in Freudian theory represents:",
+    "options": ["A) The moral conscience", "B) The rational mind", "C) Primitive instincts and desires", "D) The reality principle"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Psychoanalysis"
+  },
+  {
+    "id": 23,
+    "question": "Which Gestalt principle refers to the tendency to fill in gaps in incomplete figures?",
+    "options": ["A) Proximity", "B) Similarity", "C) Closure", "D) Continuity"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Perception"
+  },
+  {
+    "id": 24,
+    "question": "PTSD stands for:",
+    "options": ["A) Pre-Traumatic Stress Disorder", "B) Post-Traumatic Stress Disorder", "C) Partial Traumatic Syndrome Disorder", "D) Post-Tension Stress Disorder"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 25,
+    "question": "The concept of 'self-efficacy' was introduced by:",
+    "options": ["A) Carl Rogers", "B) Abraham Maslow", "C) Albert Bandura", "D) Erik Erikson"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Personality"
+  },
+  {
+    "id": 26,
+    "question": "Which lobe of the brain is responsible for processing visual information?",
+    "options": ["A) Frontal Lobe", "B) Parietal Lobe", "C) Temporal Lobe", "D) Occipital Lobe"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 27,
+    "question": "Which theory of emotion states that physiological changes cause emotional experiences?",
+    "options": ["A) Cannon-Bard Theory", "B) Schachter-Singer Theory", "C) James-Lange Theory", "D) Lazarus Theory"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Emotion"
+  },
+  {
+    "id": 28,
+    "question": "Erikson's first stage of psychosocial development involves:",
+    "options": ["A) Autonomy vs Shame", "B) Trust vs Mistrust", "C) Initiative vs Guilt", "D) Industry vs Inferiority"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Developmental Psychology"
+  },
+  {
+    "id": 29,
+    "question": "Which disorder involves alternating episodes of mania and depression?",
+    "options": ["A) Schizophrenia", "B) Borderline Personality Disorder", "C) Bipolar Disorder", "D) Cyclothymia"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 30,
+    "question": "The bystander effect suggests that people are less likely to help in emergencies when:",
+    "options": ["A) They are alone", "B) Others are present", "C) Emergency is minor", "D) They know the victim"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 31,
+    "question": "Which type of reinforcement involves removing an unpleasant stimulus to increase behavior?",
+    "options": ["A) Positive Reinforcement", "B) Negative Reinforcement", "C) Positive Punishment", "D) Negative Punishment"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Behavioral Psychology"
+  },
+  {
+    "id": 32,
+    "question": "The 'halo effect' in social psychology refers to:",
+    "options": ["A) Judging based on one positive trait", "B) Group decision making error", "C) Confirmation of existing beliefs", "D) Self-serving attribution"],
+    "answer": "A",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 33,
+    "question": "Which approach treats psychological disorders using talk therapy?",
+    "options": ["A) Biomedical approach", "B) Psychotherapy", "C) Drug Therapy", "D) Electroconvulsive Therapy"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Therapies"
+  },
+  {
+    "id": 34,
+    "question": "The IQ score of 100 represents:",
+    "options": ["A) Above average intelligence", "B) Below average intelligence", "C) Average intelligence", "D) Gifted intelligence"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Intelligence"
+  },
+  {
+    "id": 35,
+    "question": "Which brain structure is called the 'gateway to memory'?",
+    "options": ["A) Amygdala", "B) Hypothalamus", "C) Hippocampus", "D) Thalamus"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 36,
+    "question": "Solomon Asch's experiments demonstrated the power of:",
+    "options": ["A) Obedience", "B) Conformity", "C) Prejudice", "D) Aggression"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 37,
+    "question": "Which type of therapy challenges irrational thoughts and beliefs?",
+    "options": ["A) Psychoanalytic Therapy", "B) Humanistic Therapy", "C) Cognitive Behavioral Therapy", "D) Gestalt Therapy"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Therapies"
+  },
+  {
+    "id": 38,
+    "question": "The concept of 'tabula rasa' (blank slate) was proposed by:",
+    "options": ["A) Descartes", "B) John Locke", "C) Aristotle", "D) Plato"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "History of Psychology"
+  },
+  {
+    "id": 39,
+    "question": "Which defense mechanism involves attributing one's own unacceptable feelings to others?",
+    "options": ["A) Repression", "B) Denial", "C) Projection", "D) Sublimation"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Defense Mechanisms"
+  },
+  {
+    "id": 40,
+    "question": "The 'Big Five' personality traits do NOT include:",
+    "options": ["A) Openness", "B) Conscientiousness", "C) Intelligence", "D) Neuroticism"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Personality"
+  },
+  {
+    "id": 41,
+    "question": "Which type of research involves observing subjects in their natural environment?",
+    "options": ["A) Laboratory Experiment", "B) Case Study", "C) Naturalistic Observation", "D) Survey Research"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Research Methods"
+  },
+  {
+    "id": 42,
+    "question": "Freud's concept of the 'Oedipus Complex' occurs during which psychosexual stage?",
+    "options": ["A) Oral Stage", "B) Anal Stage", "C) Phallic Stage", "D) Latency Stage"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Psychoanalysis"
+  },
+  {
+    "id": 43,
+    "question": "Which hormone is primarily associated with stress response?",
+    "options": ["A) Insulin", "B) Cortisol", "C) Melatonin", "D) Oxytocin"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 44,
+    "question": "The tendency to attribute others' behavior to personality rather than situation is called:",
+    "options": ["A) Self-serving bias", "B) Fundamental Attribution Error", "C) Actor-Observer bias", "D) Confirmation bias"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 45,
+    "question": "Which psychological test measures personality using true/false questions?",
+    "options": ["A) Rorschach Test", "B) TAT", "C) MMPI", "D) Draw-A-Person Test"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Psychological Assessment"
+  },
+  {
+    "id": 46,
+    "question": "Classical conditioning was first described by:",
+    "options": ["A) Skinner", "B) Watson", "C) Pavlov", "D) Thorndike"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Learning"
+  },
+  {
+    "id": 47,
+    "question": "Which disorder is characterized by persistent, excessive worry?",
+    "options": ["A) Obsessive-Compulsive Disorder", "B) Generalized Anxiety Disorder", "C) Panic Disorder", "D) Social Phobia"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 48,
+    "question": "The part of the brain controlling basic life functions like breathing is the:",
+    "options": ["A) Cerebrum", "B) Cerebellum", "C) Brainstem", "D) Corpus Callosum"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 49,
+    "question": "Which psychologist developed the theory of multiple intelligences?",
+    "options": ["A) Sternberg", "B) Spearman", "C) Howard Gardner", "D) Binet"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Intelligence"
+  },
+  {
+    "id": 50,
+    "question": "The DSM-5 is used primarily for:",
+    "options": ["A) Measuring IQ", "B) Diagnosing mental disorders", "C) Administering therapy", "D) Brain scanning"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 51,
+    "question": "Carl Rogers emphasized which core condition in therapy?",
+    "options": ["A) Transference", "B) Unconditional Positive Regard", "C) Free Association", "D) Systematic Desensitization"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Humanistic Psychology"
+  },
+  {
+    "id": 52,
+    "question": "Which memory system stores facts and general knowledge?",
+    "options": ["A) Episodic Memory", "B) Procedural Memory", "C) Semantic Memory", "D) Working Memory"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Memory"
+  },
+  {
+    "id": 53,
+    "question": "Deindividuation in groups leads to:",
+    "options": ["A) More rational behavior", "B) Increased personal responsibility", "C) Loss of individual identity", "D) Better decision making"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 54,
+    "question": "Which phenomenon occurs when a person's performance improves with others watching?",
+    "options": ["A) Social Loafing", "B) Group Think", "C) Social Facilitation", "D) Diffusion of Responsibility"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 55,
+    "question": "The concept of 'learned helplessness' was developed by:",
+    "options": ["A) Martin Seligman", "B) Aaron Beck", "C) David Rosenhan", "D) Philip Zimbardo"],
+    "answer": "A",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Behavioral Psychology"
+  },
+  {
+    "id": 56,
+    "question": "Which schedule of reinforcement is most resistant to extinction?",
+    "options": ["A) Fixed Ratio", "B) Fixed Interval", "C) Variable Ratio", "D) Variable Interval"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Behavioral Psychology"
+  },
+  {
+    "id": 57,
+    "question": "Psychological stress that results from positive events is called:",
+    "options": ["A) Distress", "B) Eustress", "C) Burnout", "D) Anxiety"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Health Psychology"
+  },
+  {
+    "id": 58,
+    "question": "Which approach to psychology studies mental processes like thinking and problem-solving?",
+    "options": ["A) Biological approach", "B) Psychodynamic approach", "C) Cognitive approach", "D) Humanistic approach"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Approaches in Psychology"
+  },
+  {
+    "id": 59,
+    "question": "What is 'extinction' in classical conditioning?",
+    "options": ["A) Strengthening of conditioned response", "B) Gradual disappearance of conditioned response", "C) Generalization of stimulus", "D) Formation of new habit"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Learning"
+  },
+  {
+    "id": 60,
+    "question": "Wernicke's area is associated with:",
+    "options": ["A) Motor control", "B) Vision processing", "C) Language comprehension", "D) Emotional regulation"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 61,
+    "question": "Prejudice is primarily a(n):",
+    "options": ["A) Behavioral response", "B) Cognitive distortion", "C) Emotional attitude", "D) Negative attitude toward a group"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 62,
+    "question": "Which type of validity refers to whether a test measures what it claims to measure?",
+    "options": ["A) Reliability", "B) Construct Validity", "C) Ecological Validity", "D) Concurrent Validity"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Research Methods"
+  },
+  {
+    "id": 63,
+    "question": "The Thematic Apperception Test (TAT) is a type of:",
+    "options": ["A) Intelligence test", "B) Neuropsychological test", "C) Projective personality test", "D) Aptitude test"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Psychological Assessment"
+  },
+  {
+    "id": 64,
+    "question": "Which developmental theorist proposed the concept of 'Zone of Proximal Development'?",
+    "options": ["A) Piaget", "B) Vygotsky", "C) Erikson", "D) Kohlberg"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Developmental Psychology"
+  },
+  {
+    "id": 65,
+    "question": "Insomnia, narcolepsy, and sleep apnea are all:",
+    "options": ["A) Anxiety Disorders", "B) Sleep Disorders", "C) Mood Disorders", "D) Dissociative Disorders"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "States of Consciousness"
+  },
+  {
+    "id": 66,
+    "question": "The limbic system is primarily involved in:",
+    "options": ["A) Motor coordination", "B) Emotion and motivation", "C) Language processing", "D) Visual perception"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 67,
+    "question": "Albert Ellis developed which type of therapy?",
+    "options": ["A) Psychoanalysis", "B) Gestalt Therapy", "C) REBT (Rational Emotive Behavior Therapy)", "D) Client-Centered Therapy"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Therapies"
+  },
+  {
+    "id": 68,
+    "question": "Which term describes a false belief held firmly despite evidence to the contrary?",
+    "options": ["A) Hallucination", "B) Illusion", "C) Delusion", "D) Phobia"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 69,
+    "question": "The statistical measure of relationship between two variables is called:",
+    "options": ["A) Standard Deviation", "B) Correlation Coefficient", "C) Mean", "D) Regression"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Research Methods"
+  },
+  {
+    "id": 70,
+    "question": "Which therapy uses gradual exposure to feared stimuli?",
+    "options": ["A) Free Association", "B) Systematic Desensitization", "C) Flooding", "D) Both B and C"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Therapies"
+  },
+  {
+    "id": 71,
+    "question": "In psychological research, the variable that is manipulated is called:",
+    "options": ["A) Dependent Variable", "B) Extraneous Variable", "C) Independent Variable", "D) Confounding Variable"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Research Methods"
+  },
+  {
+    "id": 72,
+    "question": "Which perspective explains behavior in terms of brain, genes, and nervous system?",
+    "options": ["A) Sociocultural Perspective", "B) Biological Perspective", "C) Psychodynamic Perspective", "D) Humanistic Perspective"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Approaches in Psychology"
+  },
+  {
+    "id": 73,
+    "question": "A child who calls all men 'daddy' is demonstrating:",
+    "options": ["A) Discrimination", "B) Extinction", "C) Generalization", "D) Shaping"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Learning"
+  },
+  {
+    "id": 74,
+    "question": "Which psychologist introduced the concept of 'collective unconscious'?",
+    "options": ["A) Freud", "B) Adler", "C) Jung", "D) Horney"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Personality"
+  },
+  {
+    "id": 75,
+    "question": "The phenomenon where group decisions are more extreme than individual ones is:",
+    "options": ["A) Groupthink", "B) Social Loafing", "C) Group Polarization", "D) Deindividuation"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 76,
+    "question": "Which approach uses brain imaging techniques like fMRI?",
+    "options": ["A) Behavioral neuroscience", "B) Psychoanalysis", "C) Humanistic psychology", "D) Social learning theory"],
+    "answer": "A",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 77,
+    "question": "The Stroop Effect demonstrates interference in:",
+    "options": ["A) Memory recall", "B) Selective attention", "C) Emotional processing", "D) Motor learning"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 78,
+    "question": "Autism Spectrum Disorder primarily affects:",
+    "options": ["A) Physical coordination", "B) Social communication and behavior", "C) Memory and attention", "D) Language only"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 79,
+    "question": "Which research method can establish cause and effect relationships?",
+    "options": ["A) Correlation study", "B) Case study", "C) Experiment", "D) Survey"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Research Methods"
+  },
+  {
+    "id": 80,
+    "question": "Melatonin is produced by which gland and regulates:",
+    "options": ["A) Pituitary gland - growth", "B) Pineal gland - sleep-wake cycle", "C) Adrenal gland - stress", "D) Thyroid gland - metabolism"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 81,
+    "question": "The first psychology laboratory was established in which year?",
+    "options": ["A) 1859", "B) 1879", "C) 1899", "D) 1909"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "History of Psychology"
+  },
+  {
+    "id": 82,
+    "question": "Which phobia involves fear of open or public spaces?",
+    "options": ["A) Claustrophobia", "B) Agoraphobia", "C) Acrophobia", "D) Xenophobia"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 83,
+    "question": "The process of encoding, storing, and retrieving information is called:",
+    "options": ["A) Cognition", "B) Perception", "C) Memory", "D) Attention"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Memory"
+  },
+  {
+    "id": 84,
+    "question": "Which concept refers to mental frameworks that organize and interpret information?",
+    "options": ["A) Scripts", "B) Schemas", "C) Heuristics", "D) Algorithms"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 85,
+    "question": "A key symptom of schizophrenia is:",
+    "options": ["A) Persistent sadness", "B) Excessive fear", "C) Hallucinations and delusions", "D) Memory loss"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 86,
+    "question": "Kohlberg's theory focuses on the development of:",
+    "options": ["A) Cognitive skills", "B) Moral reasoning", "C) Language acquisition", "D) Social identity"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Developmental Psychology"
+  },
+  {
+    "id": 87,
+    "question": "The 'placebo effect' demonstrates the power of:",
+    "options": ["A) Medication effectiveness", "B) Expectation and belief", "C) Physical treatment", "D) Doctor's expertise"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Research Methods"
+  },
+  {
+    "id": 88,
+    "question": "Which factor is considered a major cause of stress?",
+    "options": ["A) Positive life events only", "B) Major life changes", "C) Only traumatic events", "D) Daily exercise"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Health Psychology"
+  },
+  {
+    "id": 89,
+    "question": "Mirror neurons are believed to play a role in:",
+    "options": ["A) Sleep regulation", "B) Visual processing", "C) Empathy and imitation", "D) Stress response"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 90,
+    "question": "Which type of memory is stored for a lifetime with little forgetting?",
+    "options": ["A) Short-term memory", "B) Working memory", "C) Sensory memory", "D) Long-term memory"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Memory"
+  },
+  {
+    "id": 91,
+    "question": "The term 'nature vs nurture' in psychology refers to:",
+    "options": ["A) Environment vs genetics debate", "B) Mind vs body problem", "C) Conscious vs unconscious mind", "D) Learning vs instinct debate"],
+    "answer": "A",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Introduction to Psychology"
+  },
+  {
+    "id": 92,
+    "question": "Which psychologist is associated with 'hierarchy of needs' theory?",
+    "options": ["A) Carl Rogers", "B) Abraham Maslow", "C) Erik Erikson", "D) Albert Bandura"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Motivation"
+  },
+  {
+    "id": 93,
+    "question": "The ability to understand and share feelings of others is called:",
+    "options": ["A) Sympathy", "B) Compassion", "C) Empathy", "D) Altruism"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 94,
+    "question": "Which brain hemisphere is typically dominant for language in right-handed people?",
+    "options": ["A) Right hemisphere", "B) Left hemisphere", "C) Both equally", "D) Depends on language type"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 95,
+    "question": "OCD stands for:",
+    "options": ["A) Obsessive Compulsive Disorder", "B) Occasional Compulsive Distress", "C) Overly Controlled Disorder", "D) Obsessive Cognitive Disturbance"],
+    "answer": "A",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 96,
+    "question": "Which theory suggests that emotions result from our interpretation of physiological arousal?",
+    "options": ["A) James-Lange Theory", "B) Cannon-Bard Theory", "C) Schachter-Singer Two-Factor Theory", "D) Facial Feedback Theory"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Emotion"
+  },
+  {
+    "id": 97,
+    "question": "Which early school of psychology used introspection as its primary method?",
+    "options": ["A) Behaviorism", "B) Functionalism", "C) Structuralism", "D) Gestalt"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "History of Psychology"
+  },
+  {
+    "id": 98,
+    "question": "Erikson's stage 'Intimacy vs Isolation' occurs during:",
+    "options": ["A) Adolescence", "B) Early Adulthood", "C) Middle Age", "D) Old Age"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Developmental Psychology"
+  },
+  {
+    "id": 99,
+    "question": "Which drug class is commonly prescribed for depression?",
+    "options": ["A) Antipsychotics", "B) Benzodiazepines", "C) Antidepressants (SSRIs)", "D) Mood Stabilizers"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Therapies"
+  },
+  {
+    "id": 100,
+    "question": "Positive psychology focuses primarily on:",
+    "options": ["A) Treating mental illness", "B) Human strengths and well-being", "C) Unconscious conflicts", "D) Behavioral modification"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Positive Psychology"
+  },
+  {
+    "id": 101,
+    "question": "The 'serial position effect' in memory shows that people best remember:",
+    "options": ["A) Middle items only", "B) Random items", "C) First and last items", "D) Emotionally charged items only"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Memory"
+  },
+  {
+    "id": 102,
+    "question": "Which concept describes changing one's behavior to match a social group?",
+    "options": ["A) Compliance", "B) Obedience", "C) Conformity", "D) Persuasion"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 103,
+    "question": "Broca's area is responsible for:",
+    "options": ["A) Memory consolidation", "B) Speech production", "C) Visual processing", "D) Emotional response"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 104,
+    "question": "Which disorder involves dissociation from one's identity, resulting in multiple personalities?",
+    "options": ["A) Schizophrenia", "B) Dissociative Identity Disorder", "C) Borderline Personality Disorder", "D) Depersonalization Disorder"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 105,
+    "question": "Which concept in social psychology refers to attributing success to oneself and failure to others?",
+    "options": ["A) Fundamental Attribution Error", "B) Self-serving Bias", "C) Actor-Observer Effect", "D) Confirmation Bias"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 106,
+    "question": "Anxiety, stress, and depression are studied in which branch of psychology?",
+    "options": ["A) Educational Psychology", "B) Forensic Psychology", "C) Health and Clinical Psychology", "D) Industrial Psychology"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Applied Psychology"
+  },
+  {
+    "id": 107,
+    "question": "The phenomenon of 'deja vu' is an example of:",
+    "options": ["A) Memory illusion", "B) Hallucination", "C) Delusion", "D) Flashbulb memory"],
+    "answer": "A",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Memory"
+  },
+  {
+    "id": 108,
+    "question": "Which area of psychology applies psychological principles to the workplace?",
+    "options": ["A) Clinical Psychology", "B) Industrial-Organizational Psychology", "C) Developmental Psychology", "D) Sports Psychology"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Applied Psychology"
+  },
+  {
+    "id": 109,
+    "question": "The term 'neuroplasticity' refers to:",
+    "options": ["A) Brain's ability to change and adapt", "B) Rigidity of neural pathways", "C) Brain chemistry changes", "D) Rate of neuron firing"],
+    "answer": "A",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 110,
+    "question": "Which type of aggression is motivated by achieving a goal?",
+    "options": ["A) Hostile Aggression", "B) Relational Aggression", "C) Instrumental Aggression", "D) Reactive Aggression"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 111,
+    "question": "The first woman to receive a PhD in psychology was:",
+    "options": ["A) Mary Calkins", "B) Margaret Washburn", "C) Karen Horney", "D) Anna Freud"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "History of Psychology"
+  },
+  {
+    "id": 112,
+    "question": "Which technique is used in cognitive therapy to identify negative automatic thoughts?",
+    "options": ["A) Free Association", "B) Dream Analysis", "C) Thought Records / Journaling", "D) Hypnosis"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Therapies"
+  },
+  {
+    "id": 113,
+    "question": "In operant conditioning, a behavior followed by a punisher will:",
+    "options": ["A) Increase in frequency", "B) Remain unchanged", "C) Decrease in frequency", "D) Become automatic"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Behavioral Psychology"
+  },
+  {
+    "id": 114,
+    "question": "Which part of the neuron receives signals from other neurons?",
+    "options": ["A) Axon", "B) Myelin Sheath", "C) Cell Body", "D) Dendrites"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 115,
+    "question": "Emotional intelligence (EQ) was popularized by:",
+    "options": ["A) Howard Gardner", "B) Daniel Goleman", "C) Robert Sternberg", "D) Alfred Binet"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Intelligence"
+  },
+  {
+    "id": 116,
+    "question": "Which theory of forgetting suggests that old memories interfere with new ones?",
+    "options": ["A) Decay Theory", "B) Interference Theory", "C) Retrieval Failure Theory", "D) Motivated Forgetting Theory"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Memory"
+  },
+  {
+    "id": 117,
+    "question": "Which approach focuses on understanding behavior within cultural contexts?",
+    "options": ["A) Biological approach", "B) Psychodynamic approach", "C) Sociocultural approach", "D) Cognitive approach"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Approaches in Psychology"
+  },
+  {
+    "id": 118,
+    "question": "The Stanford Prison Experiment was conducted by:",
+    "options": ["A) Stanley Milgram", "B) Philip Zimbardo", "C) Solomon Asch", "D) John Watson"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 119,
+    "question": "Which brain chemical is deficient in Parkinson's disease?",
+    "options": ["A) Serotonin", "B) Acetylcholine", "C) Dopamine", "D) GABA"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 120,
+    "question": "The James-Lange theory states that emotions:",
+    "options": ["A) Precede physiological changes", "B) Follow physiological changes", "C) Occur simultaneously with physiological changes", "D) Are independent of physiological changes"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Emotion"
+  },
+  {
+    "id": 121,
+    "question": "Which memory process involves moving information to long-term storage?",
+    "options": ["A) Retrieval", "B) Encoding", "C) Consolidation", "D) Rehearsal"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Memory"
+  },
+  {
+    "id": 122,
+    "question": "Which disorder involves episodes of binge eating followed by purging?",
+    "options": ["A) Anorexia Nervosa", "B) Binge Eating Disorder", "C) Bulimia Nervosa", "D) Pica"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 123,
+    "question": "The concept of 'flow' in psychology was introduced by:",
+    "options": ["A) Martin Seligman", "B) Mihaly Csikszentmihalyi", "C) Christopher Peterson", "D) Barbara Fredrickson"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Positive Psychology"
+  },
+  {
+    "id": 124,
+    "question": "Which therapy uses relaxation techniques alongside gradual exposure to anxiety triggers?",
+    "options": ["A) Aversion Therapy", "B) Systematic Desensitization", "C) Token Economy", "D) Modeling"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Therapies"
+  },
+  {
+    "id": 125,
+    "question": "Which of the following is NOT a primary emotion according to Paul Ekman?",
+    "options": ["A) Fear", "B) Disgust", "C) Guilt", "D) Surprise"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Emotion"
+  },
+  {
+    "id": 126,
+    "question": "Attention Deficit Hyperactivity Disorder (ADHD) primarily affects:",
+    "options": ["A) Memory consolidation", "B) Attention, impulse control, and activity levels", "C) Language processing", "D) Social skills only"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 127,
+    "question": "Which researcher showed that aggression can be learned through observation?",
+    "options": ["A) Skinner", "B) Bandura (Bobo Doll Experiment)", "C) Watson", "D) Milgram"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Learning"
+  },
+  {
+    "id": 128,
+    "question": "The field that applies psychology in legal and criminal contexts is:",
+    "options": ["A) Clinical Psychology", "B) Educational Psychology", "C) Forensic Psychology", "D) Environmental Psychology"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Applied Psychology"
+  },
+  {
+    "id": 129,
+    "question": "Which psychological concept describes the tendency to seek information confirming existing beliefs?",
+    "options": ["A) Availability heuristic", "B) Confirmation bias", "C) Anchoring bias", "D) Representativeness heuristic"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 130,
+    "question": "Anna Freud contributed significantly to:",
+    "options": ["A) Behavioral therapy", "B) Child psychoanalysis and ego psychology", "C) Humanistic psychology", "D) Cognitive psychology"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "History of Psychology"
+  },
+  {
+    "id": 131,
+    "question": "Which type of coping strategy involves changing how we think about a stressor?",
+    "options": ["A) Problem-focused coping", "B) Avoidance coping", "C) Emotion-focused coping", "D) Cognitive reappraisal"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Health Psychology"
+  },
+  {
+    "id": 132,
+    "question": "The famous 'Little Albert' experiment was conducted by:",
+    "options": ["A) Skinner", "B) John Watson", "C) Pavlov", "D) Bandura"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "History of Psychology"
+  },
+  {
+    "id": 133,
+    "question": "Which concept describes humans as naturally good and capable of growth?",
+    "options": ["A) Determinism", "B) Behaviorism", "C) Humanism", "D) Structuralism"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Humanistic Psychology"
+  },
+  {
+    "id": 134,
+    "question": "Narcolepsy is a disorder characterized by:",
+    "options": ["A) Inability to sleep at night", "B) Sudden uncontrollable sleep attacks", "C) Sleep walking", "D) Nightmares and night terrors"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "States of Consciousness"
+  },
+  {
+    "id": 135,
+    "question": "Which concept refers to reduced helping behavior when others are present?",
+    "options": ["A) Social facilitation", "B) Deindividuation", "C) Diffusion of responsibility", "D) Group polarization"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 136,
+    "question": "Selective serotonin reuptake inhibitors (SSRIs) are primarily used to treat:",
+    "options": ["A) Schizophrenia", "B) Depression and anxiety", "C) ADHD", "D) Bipolar disorder"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Therapies"
+  },
+  {
+    "id": 137,
+    "question": "The 'availability heuristic' involves:",
+    "options": ["A) Making decisions based on logical rules", "B) Judging likelihood based on how easily examples come to mind", "C) Anchoring decisions on first information", "D) Estimating based on representative samples"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 138,
+    "question": "Piaget's concrete operational stage is characterized by:",
+    "options": ["A) Abstract thinking", "B) Object permanence", "C) Logical thinking about concrete objects", "D) Symbolic play only"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Developmental Psychology"
+  },
+  {
+    "id": 139,
+    "question": "Which clinical psychology concept involves a therapist's feelings toward the client?",
+    "options": ["A) Transference", "B) Countertransference", "C) Resistance", "D) Projection"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Therapies"
+  },
+  {
+    "id": 140,
+    "question": "Which disorder involves extreme mood swings from very high (manic) to very low (depressive)?",
+    "options": ["A) Schizophrenia", "B) Bipolar Disorder", "C) Major Depression", "D) Cyclothymia"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 141,
+    "question": "The role of the hypothalamus in behavior includes regulating:",
+    "options": ["A) Language and speech", "B) Memory consolidation", "C) Hunger, thirst, and temperature", "D) Visual processing"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 142,
+    "question": "Attachment theory was primarily developed by:",
+    "options": ["A) Bowlby and Ainsworth", "B) Freud and Adler", "C) Piaget and Vygotsky", "D) Maslow and Rogers"],
+    "answer": "A",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Developmental Psychology"
+  },
+  {
+    "id": 143,
+    "question": "Which type of study follows the same group of people over time?",
+    "options": ["A) Cross-sectional study", "B) Longitudinal study", "C) Case study", "D) Twin study"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Research Methods"
+  },
+  {
+    "id": 144,
+    "question": "The concept of 'insight' in problem-solving refers to:",
+    "options": ["A) Gradual trial and error", "B) Using algorithms", "C) Sudden understanding of a solution", "D) Following established rules"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 145,
+    "question": "Which personality disorder is characterized by grandiosity and lack of empathy?",
+    "options": ["A) Antisocial Personality Disorder", "B) Borderline Personality Disorder", "C) Narcissistic Personality Disorder", "D) Histrionic Personality Disorder"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 146,
+    "question": "Which technique involves asking patients to say whatever comes to mind?",
+    "options": ["A) Systematic Desensitization", "B) Free Association", "C) Behavioral Activation", "D) Mindfulness"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Therapies"
+  },
+  {
+    "id": 147,
+    "question": "The evolutionary psychology perspective explains behavior in terms of:",
+    "options": ["A) Social learning", "B) Cultural influences", "C) Adaptive value and natural selection", "D) Conscious decision-making"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Approaches in Psychology"
+  },
+  {
+    "id": 148,
+    "question": "Sensory adaptation occurs when:",
+    "options": ["A) Stimulation becomes more intense", "B) Response to constant stimulus decreases over time", "C) Senses become more acute", "D) New stimulus is encountered"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Sensation and Perception"
+  },
+  {
+    "id": 149,
+    "question": "Which ethical principle requires participants to agree to participate after being informed about the study?",
+    "options": ["A) Debriefing", "B) Confidentiality", "C) Informed Consent", "D) Anonymity"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Research Ethics"
+  },
+  {
+    "id": 150,
+    "question": "The concept of 'unconditional positive regard' means accepting a person:",
+    "options": ["A) Only when they behave well", "B) With conditions and expectations", "C) Without judgment regardless of behavior", "D) Based on their achievements"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Humanistic Psychology"
+  },
+  {
+    "id": 151,
+    "question": "Which approach in psychology is known as the 'third wave'?",
+    "options": ["A) Psychoanalysis", "B) Behaviorism", "C) Humanistic Psychology", "D) Positive Psychology"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "History of Psychology"
+  },
+  {
+    "id": 152,
+    "question": "The process by which we use past experiences to interpret new sensory data is called:",
+    "options": ["A) Sensation", "B) Adaptation", "C) Perception", "D) Detection"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Sensation and Perception"
+  },
+  {
+    "id": 153,
+    "question": "Which defense mechanism channels unacceptable impulses into socially acceptable behavior?",
+    "options": ["A) Repression", "B) Regression", "C) Sublimation", "D) Rationalization"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Defense Mechanisms"
+  },
+  {
+    "id": 154,
+    "question": "The superego in Freudian theory represents:",
+    "options": ["A) Pleasure principle", "B) Reality principle", "C) Moral standards and ideals", "D) Basic biological drives"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Psychoanalysis"
+  },
+  {
+    "id": 155,
+    "question": "What does EEG measure in psychology research?",
+    "options": ["A) Brain structure", "B) Electrical activity of the brain", "C) Blood flow in the brain", "D) Brain chemistry"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Research Methods"
+  },
+  {
+    "id": 156,
+    "question": "Which disorder involves a split from reality including disorganized thinking and behavior?",
+    "options": ["A) Bipolar Disorder", "B) Major Depressive Disorder", "C) Schizophrenia", "D) OCD"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 157,
+    "question": "Maslow placed physiological needs (food, water, shelter) at which level of his hierarchy?",
+    "options": ["A) Top level", "B) Middle level", "C) Second level", "D) Bottom/base level"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Motivation"
+  },
+  {
+    "id": 158,
+    "question": "Which process allows us to focus on one stimulus while ignoring others?",
+    "options": ["A) Perception", "B) Selective Attention", "C) Working Memory", "D) Divided Attention"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 159,
+    "question": "Which term describes using shortcuts to make quick judgments?",
+    "options": ["A) Algorithms", "B) Heuristics", "C) Schemas", "D) Scripts"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 160,
+    "question": "Mindfulness-Based Cognitive Therapy (MBCT) combines mindfulness with:",
+    "options": ["A) Psychoanalysis", "B) Behavioral therapy", "C) Cognitive therapy", "D) Humanistic therapy"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Therapies"
+  },
+  {
+    "id": 161,
+    "question": "Which part of the neuron transmits signals to other neurons or muscles?",
+    "options": ["A) Dendrites", "B) Cell body", "C) Axon", "D) Nucleus"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 162,
+    "question": "The 'cocktail party effect' demonstrates our ability to:",
+    "options": ["A) Process all sounds equally", "B) Focus on one conversation among many", "C) Block all background noise", "D) Enhance hearing in crowds"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 163,
+    "question": "Aversion therapy is used to treat:",
+    "options": ["A) Phobias", "B) Addictions and unwanted behaviors", "C) Depression", "D) Schizophrenia"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Therapies"
+  },
+  {
+    "id": 164,
+    "question": "Which sleep disorder involves stopping breathing repeatedly during sleep?",
+    "options": ["A) Insomnia", "B) Narcolepsy", "C) Sleep Apnea", "D) Somnambulism"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "States of Consciousness"
+  },
+  {
+    "id": 165,
+    "question": "Which psychological concept describes wearing a social mask or persona?",
+    "options": ["A) Archetype", "B) Persona (Jung)", "C) Superego (Freud)", "D) Social Self"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Personality"
+  },
+  {
+    "id": 166,
+    "question": "Physiological arousal + cognitive label = emotion, according to:",
+    "options": ["A) Lazarus Theory", "B) Cannon-Bard Theory", "C) Schachter-Singer Theory", "D) James-Lange Theory"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Emotion"
+  },
+  {
+    "id": 167,
+    "question": "Applied psychology uses psychological principles to solve:",
+    "options": ["A) Only theoretical problems", "B) Real-world practical problems", "C) Laboratory-based issues only", "D) Historical psychological problems"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Applied Psychology"
+  },
+  {
+    "id": 168,
+    "question": "Which term describes the brain's ability to reorganize itself after injury?",
+    "options": ["A) Neurogenesis", "B) Neurodegeneration", "C) Neuroplasticity", "D) Neural inhibition"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 169,
+    "question": "Groupthink is most likely to occur in groups that are:",
+    "options": ["A) Diverse and open to criticism", "B) Cohesive and under pressure", "C) Small and informal", "D) Expert and well-informed"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 170,
+    "question": "Which disorder is associated with repeated unwanted intrusive thoughts and repetitive behaviors?",
+    "options": ["A) GAD", "B) PTSD", "C) OCD", "D) Panic Disorder"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 171,
+    "question": "The 'frontal lobe' of the brain is primarily involved in:",
+    "options": ["A) Visual processing", "B) Hearing and language comprehension", "C) Planning, decision-making, and personality", "D) Spatial awareness"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 172,
+    "question": "Which disorder involves persistent irrational fear of a specific object or situation?",
+    "options": ["A) GAD", "B) Specific Phobia", "C) Social Anxiety Disorder", "D) Panic Disorder"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 173,
+    "question": "Which type of memory is involved in remembering how to ride a bicycle?",
+    "options": ["A) Episodic memory", "B) Semantic memory", "C) Procedural memory", "D) Flashbulb memory"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Memory"
+  },
+  {
+    "id": 174,
+    "question": "Which psychological concept is studied in 'positive psychology'?",
+    "options": ["A) Mental disorders", "B) Trauma and stress", "C) Happiness, resilience, and character strengths", "D) Behavioral disorders"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Positive Psychology"
+  },
+  {
+    "id": 175,
+    "question": "Longitudinal research differs from cross-sectional research in that it:",
+    "options": ["A) Studies many age groups at once", "B) Focuses on a single event", "C) Follows the same participants over time", "D) Uses experimental methods only"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Research Methods"
+  },
+  {
+    "id": 176,
+    "question": "Extinction in operant conditioning occurs when:",
+    "options": ["A) Punishment increases", "B) Reinforcement is removed", "C) New behaviors are shaped", "D) Punishment decreases"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Behavioral Psychology"
+  },
+  {
+    "id": 177,
+    "question": "The ego in Freudian psychology operates on which principle?",
+    "options": ["A) Pleasure principle", "B) Reality principle", "C) Moral principle", "D) Social principle"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Psychoanalysis"
+  },
+  {
+    "id": 178,
+    "question": "Which childhood disorder is characterized by persistent inattention and/or hyperactivity?",
+    "options": ["A) Autism Spectrum Disorder", "B) Conduct Disorder", "C) Oppositional Defiant Disorder", "D) ADHD"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Developmental Psychology"
+  },
+  {
+    "id": 179,
+    "question": "The gate control theory explains the psychological aspects of:",
+    "options": ["A) Memory formation", "B) Pain perception", "C) Emotional regulation", "D) Attention control"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Sensation and Perception"
+  },
+  {
+    "id": 180,
+    "question": "Which technique uses biofeedback and relaxation to manage stress?",
+    "options": ["A) Free Association", "B) Dream Analysis", "C) Mindfulness and Relaxation Training", "D) Systematic Desensitization"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Health Psychology"
+  },
+  {
+    "id": 181,
+    "question": "Which hormone is called the 'bonding hormone' or 'love hormone'?",
+    "options": ["A) Adrenaline", "B) Cortisol", "C) Oxytocin", "D) Testosterone"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 182,
+    "question": "Beck's cognitive triad in depression involves negative views about:",
+    "options": ["A) Past, present, and emotions", "B) Self, world, and future", "C) Family, friends, and work", "D) Thoughts, behaviors, and feelings"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 183,
+    "question": "Which type of thinking generates many possible solutions?",
+    "options": ["A) Convergent thinking", "B) Critical thinking", "C) Divergent thinking", "D) Analytical thinking"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Cognitive Psychology"
+  },
+  {
+    "id": 184,
+    "question": "Social identity theory was proposed by:",
+    "options": ["A) Leon Festinger", "B) Henri Tajfel", "C) Solomon Asch", "D) Albert Bandura"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 185,
+    "question": "Shaping in operant conditioning involves:",
+    "options": ["A) Rewarding only the final desired behavior", "B) Punishing undesired behaviors", "C) Reinforcing successive approximations of desired behavior", "D) Ignoring all behaviors until the target appears"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Behavioral Psychology"
+  },
+  {
+    "id": 186,
+    "question": "Which disorder involves extreme weight loss due to distorted body image and fear of gaining weight?",
+    "options": ["A) Bulimia Nervosa", "B) Binge Eating Disorder", "C) Anorexia Nervosa", "D) Body Dysmorphic Disorder"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Abnormal Psychology"
+  },
+  {
+    "id": 187,
+    "question": "The 'recency effect' in memory refers to better recall of:",
+    "options": ["A) First items in a list", "B) Emotionally charged events", "C) Last items in a list", "D) Repetitively rehearsed items"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Memory"
+  },
+  {
+    "id": 188,
+    "question": "Which model explains addiction as a brain disease affecting reward pathways?",
+    "options": ["A) Moral model", "B) Social learning model", "C) Disease model of addiction", "D) Psychodynamic model"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Health Psychology"
+  },
+  {
+    "id": 189,
+    "question": "Which psychologist introduced the concept of 'archetypes' in the collective unconscious?",
+    "options": ["A) Sigmund Freud", "B) Carl Jung", "C) Alfred Adler", "D) Erich Fromm"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Personality"
+  },
+  {
+    "id": 190,
+    "question": "Cross-cultural psychology studies:",
+    "options": ["A) Only Western psychological principles", "B) How culture influences behavior and mental processes", "C) Biological differences across cultures", "D) Migration and adaptation"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Applied Psychology"
+  },
+  {
+    "id": 191,
+    "question": "Which structure connects the two hemispheres of the brain?",
+    "options": ["A) Cerebellum", "B) Corpus Callosum", "C) Thalamus", "D) Basal Ganglia"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Biopsychology"
+  },
+  {
+    "id": 192,
+    "question": "Learned behavior that is resistant to extinction is typically maintained by which schedule?",
+    "options": ["A) Fixed ratio", "B) Continuous reinforcement", "C) Variable ratio", "D) Fixed interval"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Behavioral Psychology"
+  },
+  {
+    "id": 193,
+    "question": "Psychoneuroimmunology studies the relationship between:",
+    "options": ["A) Personality and intelligence", "B) Mental states and immune function", "C) Brain and behavior", "D) Stress and cognition"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Health Psychology"
+  },
+  {
+    "id": 194,
+    "question": "The 'door-in-the-face' technique is a persuasion strategy that involves:",
+    "options": ["A) Making a small request first", "B) Making a large request that gets refused, then a smaller one", "C) Repeating the message multiple times", "D) Using emotional appeals"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Social Psychology"
+  },
+  {
+    "id": 195,
+    "question": "Which ethical guideline ensures participants' information is not shared publicly?",
+    "options": ["A) Informed consent", "B) Debriefing", "C) Confidentiality", "D) Right to withdraw"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Research Ethics"
+  },
+  {
+    "id": 196,
+    "question": "The 'self-concept' refers to:",
+    "options": ["A) Unconscious self-image", "B) Our overall perception of who we are", "C) Public persona we show others", "D) Ideal self we aspire to be"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Personality"
+  },
+  {
+    "id": 197,
+    "question": "Which type of therapy focuses on changing behavior patterns through rewards and consequences?",
+    "options": ["A) Psychoanalytic Therapy", "B) Behavior Therapy", "C) Client-centered Therapy", "D) Gestalt Therapy"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "easy",
+    "topic": "Therapies"
+  },
+  {
+    "id": 198,
+    "question": "Which early psychologist founded the first formal school of psychology (Structuralism)?",
+    "options": ["A) William James", "B) John Watson", "C) Wilhelm Wundt", "D) Edward Titchener"],
+    "answer": "D",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "History of Psychology"
+  },
+  {
+    "id": 199,
+    "question": "Which assessment tool measures depression on a scale from 0 to 63?",
+    "options": ["A) GAD-7", "B) BDI (Beck Depression Inventory)", "C) PHQ-9", "D) MMPI"],
+    "answer": "B",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "hard",
+    "topic": "Psychological Assessment"
+  },
+  {
+    "id": 200,
+    "question": "Well-being in positive psychology is described by the PERMA model. Which of the following is NOT part of PERMA?",
+    "options": ["A) Positive Emotions", "B) Relationships", "C) Intelligence", "D) Meaning"],
+    "answer": "C",
+    "department": "School of Liberal Arts, Behavioral and Social Sciences",
+    "difficulty": "medium",
+    "topic": "Positive Psychology"
+  }
+]

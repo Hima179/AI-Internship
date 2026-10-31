@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Faculty Portal - UAi Survey Portal{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 4rem;">
+    <div class="flex justify-between items-center mb-4">
+        <h2>Faculty Portal</h2>
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-outline">Logout</a>
+    </div>
+    
+    <div class="card">
+        <h3 style="color: var(--text-main); margin-bottom: 1rem;">Department Overview</h3>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Welcome to the faculty overview. Here you can see anonymized statistics regarding student well-being in your courses.</p>
+        
+        <div class="flex gap-4">
+            <div style="flex:1; background: #f8fafc; padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 1px solid var(--border-color);">
+                <div style="font-size: 3rem; font-weight: 700; color: var(--uai-blue);">{{ responses|length }}</div>
+                <div style="color: var(--text-muted); font-size: 0.9rem;">Surveys Completed</div>
+            </div>
+            <div style="flex:1; background: #fff0f0; padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 1px solid #ffccd5;">
+                <div style="font-size: 3rem; font-weight: 700; color: #d32f2f;">
+                    {% set ns = namespace(flagged=0) %}
+                    {% for r in responses %}
+                        {% if (r.depression_score + r.anxiety_score + r.stress_score) > 40 %}
+                            {% set ns.flagged = ns.flagged + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {{ ns.flagged }}
+                </div>
+                <div style="color: #d32f2f; font-size: 0.9rem;">Students Flagged for Support</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

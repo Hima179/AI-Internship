@@ -1,0 +1,46 @@
+# Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Python bytecode & cache
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+
+# Local databases and instance folders
+instance/
+*.sqlite
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+!.env.example
+
+# Scratch & Temporary
+scratch/
+scratch_*.py
+test_cleared.docx
+test_output.docx
+test_pgstart.docx
+test_pgstart.pdf
+test_convert.pdf
+test_pic_replace.pptx
+
+# Separate Repository
+ProductivAI/
+
+# OS generated
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store

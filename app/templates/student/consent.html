@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+                <div class="card-header bg-white py-4 border-0 text-center">
+                    <h2 class="text-teal mb-0" style="color: var(--primary-teal);">Informed Consent</h2>
+                    <p class="text-muted small mt-2">Please read the following information carefully</p>
+                </div>
+                <div class="card-body px-4 px-md-5 pb-5">
+                    <div class="consent-box p-4 bg-light rounded-3 mb-4" style="height: 400px; overflow-y: scroll; border: 1px solid var(--border-color);">
+                        <h5 class="fw-bold mb-3">1. Purpose of the Assessment</h5>
+                        <p>The primary purpose of this psychological assessment is to provide insights into your mental well-being and personality traits. This data will be used to help counsellors provide better support and guidance.</p>
+                        
+                        <h5 class="fw-bold mb-3">2. Data Privacy & Confidentiality</h5>
+                        <p>All data collected through this portal is encrypted and stored securely. Your individual responses will only be accessible to authorized university counsellors and psychologists. No identifiable data will be shared with third parties without your explicit permission.</p>
+                        
+                        <h5 class="fw-bold mb-3">3. Voluntary Participation</h5>
+                        <p>Your participation in this assessment is entirely voluntary. You have the right to skip any questions you are uncomfortable answering and you may withdraw from the assessment at any time without any negative consequences.</p>
+                        
+                        <h5 class="fw-bold mb-3">4. Right to Anonymity</h5>
+                        <p>While your UAI ID is used for system identification, reports generated for general university research are anonymized and do not link back to your personal identity.</p>
+                        
+                        <h5 class="fw-bold mb-3">5. Right to Withdraw</h5>
+                        <p>Even after giving consent, you have the right to request the deletion of your assessment records by contacting the psychological support cell.</p>
+                        
+                        <hr class="my-4">
+                        <p class="small text-muted">By clicking "I Agree & Continue", you acknowledge that you have read and understood the terms above and voluntarily agree to participate.</p>
+                    </div>
+
+                    <form method="POST" action="">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div class="d-flex flex-column flex-md-row gap-3">
+                            <button type="submit" name="action" value="agree" class="btn btn-teal px-5 py-3 w-100">
+                                <i class="fa-solid fa-check-circle me-2"></i>I Agree & Continue
+                            </button>
+                            <button type="submit" name="action" value="decline" class="btn btn-outline-danger px-4 py-3 w-100">
+                                <i class="fa-solid fa-times-circle me-2"></i>I Decline
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .consent-box::-webkit-scrollbar {
+        width: 8px;
+    }
+    .consent-box::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    .consent-box::-webkit-scrollbar-thumb {
+        background: var(--primary-teal);
+        border-radius: 10px;
+    }
+    .consent-box::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary-blue);
+    }
+    
+    /* Disable path if declined (flash messages handled in base.html) */
+    {% if get_flashed_messages(category_filter=["warning"]) %}
+    .btn-teal {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    {% endif %}
+</style>
+{% endblock %}

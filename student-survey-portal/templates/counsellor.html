@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Counsellor Portal - UAi Survey Portal{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 4rem;">
+    <div class="flex justify-between items-center mb-4">
+        <h2>Counsellor Portal</h2>
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-outline">Logout</a>
+    </div>
+    
+    <div class="card">
+        <h3 style="color: var(--text-main); margin-bottom: 1rem;">Action Items</h3>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Review students whose survey responses indicate severe risk or high stress levels requiring immediate outreach.</p>
+        
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color);">
+                    <th style="padding: 1rem; color: var(--text-muted); font-weight: 600;">Student ID</th>
+                    <th style="padding: 1rem; color: var(--text-muted); font-weight: 600;">Risk Level</th>
+                    <th style="padding: 1rem; color: var(--text-muted); font-weight: 600;">Date Submitted</th>
+                    <th style="padding: 1rem; color: var(--text-muted); font-weight: 600;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in responses %}
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 1rem;">{{ r.user.username }}</td>
+                    <td style="padding: 1rem;">
+                        {% set total = r.depression_score + r.anxiety_score + r.stress_score %}
+                        {% if total > 40 %}
+                        <span style="background: #fee2e2; color: #dc2626; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">High Risk</span>
+                        {% elif total > 20 %}
+                        <span style="background: #fef3c7; color: #d97706; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Moderate</span>
+                        {% else %}
+                        <span style="background: #e6f4ea; color: #166534; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Normal</span>
+                        {% endif %}
+                    </td>
+                    <td style="padding: 1rem;">{{ r.completed_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td style="padding: 1rem;"><button class="btn btn-primary" style="padding: 0.5rem 1rem;">Review Case</button></td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" style="padding: 2rem; text-align: center; color: var(--text-muted);">No survey responses yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

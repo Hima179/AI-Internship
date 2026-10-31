@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - UAi Survey Portal{% endblock %}
+
+{% block extra_css %}
+<style>
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 4rem auto;
+        padding: 0 2rem;
+    }
+    .header-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+    .welcome-card {
+        background: linear-gradient(135deg, var(--uai-blue) 0%, #001f5c 100%);
+        color: white;
+        border-radius: var(--radius-xl);
+        padding: 3rem;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+    .welcome-card::after {
+        content: '';
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 200px;
+        height: 200px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+    .welcome-card h1 {
+        color: white;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .welcome-card p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin-bottom: 2rem;
+    }
+    .btn-start {
+        background: var(--uai-green);
+        color: white;
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    .btn-start:hover {
+        background: var(--uai-green-hover);
+        color: white;
+        box-shadow: 0 4px 15px rgba(120, 190, 32, 0.4);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="header-section">
+        <h2>Student Dashboard</h2>
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-outline">Logout</a>
+    </div>
+
+    <div class="welcome-card">
+        <h1>Welcome back, {{ current_user.username }}!</h1>
+        <p>Your well-being is our priority. Please take a few minutes to complete the mandatory well-being survey for this semester.</p>
+        <a href="{{ url_for('survey.consent') }}" class="btn btn-start">Start Survey Now <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:8px; vertical-align: middle;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+</div>
+{% endblock %}

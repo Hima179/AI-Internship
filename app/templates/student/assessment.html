@@ -1,0 +1,715 @@
+{% extends "base.html" %}
+
+{% block navbar %}{% endblock %}
+
+{% block head %}
+<style>
+    body {
+        background-color: #ffffff;
+        font-family: 'Nunito', 'Open Sans', sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    #progress-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #f1f5f9;
+        z-index: 1060;
+    }
+
+    #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: #1a3a6b;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .assessment-topbar {
+        background-color: #ffffff;
+        border-bottom: 1px solid #e2e8f0;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        position: fixed;
+        top: 5px;
+        left: 0;
+        width: 100%;
+        z-index: 1050;
+    }
+
+    .logo-container img {
+        height: 40px;
+    }
+
+    .assessment-title-center {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1e293b;
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    .progress-text-right {
+        font-size: 14px;
+        font-weight: 600;
+        color: #64748b;
+        white-space: nowrap;
+    }
+
+    .assessment-content-wrapper {
+        margin-top: 110px;
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 150px);
+        padding: 0 16px;
+    }
+
+    .question-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 48px;
+        width: 100%;
+        max-width: 680px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02), 0 4px 6px -4px rgba(0, 0, 0, 0.02);
+        position: relative;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 1;
+    }
+
+    .question-card.fade-out {
+        opacity: 0;
+    }
+
+    .timer-container {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .timer-svg {
+        transform: rotate(-90deg);
+        width: 50px;
+        height: 50px;
+    }
+
+    .timer-bg {
+        stroke: #f1f5f9;
+        stroke-width: 3.5;
+        fill: none;
+    }
+
+    .timer-progress {
+        stroke-width: 3.5;
+        fill: none;
+        stroke-dasharray: 138.2; /* 2 * PI * 22 */
+        stroke-dashoffset: 0;
+        transition: stroke-dashoffset 0.1s linear, stroke 0.3s ease;
+    }
+
+    .timer-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 700;
+        color: #334155;
+    }
+
+    .category-header {
+        margin-bottom: 24px;
+        text-align: left;
+        padding-right: 60px; /* spacing for timer */
+    }
+
+    .category-name {
+        font-size: 14px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #1a3a6b;
+        margin-bottom: 4px;
+    }
+
+    .category-desc {
+        font-size: 12px;
+        font-weight: 600;
+        color: #64748b;
+        margin: 0;
+    }
+
+    .question-body {
+        margin: 36px 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .question-number-muted {
+        font-size: 20px;
+        font-weight: 700;
+        color: #cbd5e1;
+        margin-bottom: 12px;
+    }
+
+    .question-text-display {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e293b;
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0;
+    }
+
+    .options-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .option-card-btn {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 16px 20px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #475569;
+        text-align: left;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        width: 100%;
+        display: block;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.01);
+    }
+
+    .option-card-btn:hover {
+        border-color: #8ec5fc;
+        background-color: #f8fafc;
+        transform: translateY(-1px);
+        color: #1e293b;
+    }
+
+    .option-card-btn.selected {
+        background-color: #1a3a6b;
+        border-color: #1a3a6b;
+        color: #ffffff;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Home Adjustment Special Styles */
+    .binary-options-container {
+        display: flex;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .binary-btn {
+        flex: 1;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        text-align: center;
+        border: 1px solid;
+    }
+
+    .btn-not-true-gray {
+        background-color: #f8fafc;
+        border-color: #cbd5e1;
+        color: #475569;
+    }
+
+    .btn-not-true-gray:hover {
+        background-color: #e2e8f0;
+        border-color: #94a3b8;
+        color: #334155;
+    }
+
+    .btn-not-true-gray.selected {
+        background-color: #475569;
+        border-color: #475569;
+        color: #ffffff;
+    }
+
+    .btn-true-green {
+        background-color: #f0fdf4;
+        border-color: #bbf7d0;
+        color: #166534;
+    }
+
+    .btn-true-green:hover {
+        background-color: #dcfce7;
+        border-color: #86efac;
+        color: #14532d;
+    }
+
+    .btn-true-green.selected {
+        background-color: #15803d;
+        border-color: #15803d;
+        color: #ffffff;
+    }
+
+    /* Loading Spinner */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
+        z-index: 2000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid #f1f5f9;
+        border-top: 4px solid #1a3a6b;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 16px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 640px) {
+        .assessment-topbar {
+            padding: 0 16px;
+        }
+        .assessment-title-center {
+            font-size: 16px;
+        }
+        .question-card {
+            padding: 32px 24px;
+        }
+        .timer-container {
+            top: 16px;
+            right: 16px;
+        }
+        .category-header {
+            padding-right: 50px;
+        }
+        .binary-options-container {
+            flex-direction: column;
+            gap: 12px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Thin Progress Bar -->
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+
+<!-- Header Topbar -->
+<div class="assessment-topbar">
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='img/uai_logo.png') }}" alt="UAI Logo">
+    </div>
+    <div class="assessment-title-center" id="topbar-assessment-title">
+        Assessment
+    </div>
+    <div class="progress-text-right" id="topbar-progress-text">
+        Question -- of --
+    </div>
+</div>
+
+<!-- Main SPA Body -->
+<div class="loading-overlay" id="loading-spinner">
+    <div class="spinner"></div>
+    <h5 class="text-secondary fw-semibold">Loading Assessment...</h5>
+</div>
+
+<div class="assessment-content-wrapper">
+    <div class="question-card" id="question-card">
+        <!-- Circular Countdown Timer -->
+        <div class="timer-container" style="display: none;">
+            <svg class="timer-svg" viewBox="0 0 50 50">
+                <circle class="timer-bg" cx="25" cy="25" r="22"></circle>
+                <circle class="timer-progress" id="timer-bar" cx="25" cy="25" r="22"></circle>
+            </svg>
+            <div class="timer-text" id="timer-countdown">10</div>
+        </div>
+
+        <!-- Category Header -->
+        <div class="category-header" style="display: none;">
+            <div class="category-name" id="category-name">Category</div>
+            <p class="category-desc" id="category-desc">Category Description</p>
+        </div>
+
+        <!-- Question Body -->
+        <div class="question-body">
+            <div class="question-number-muted" id="question-num-display">Q1</div>
+            <p class="question-text-display" id="question-text"></p>
+        </div>
+
+        <!-- Options Container -->
+        <div id="options-container">
+            <!-- Dynamic Buttons / Cards -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Constants & Configurations
+    const CATEGORY_DESCRIPTIONS = {
+        // DASS-21
+        "Depression": "Assesses loss of self-esteem, lack of interest, and hopelessness.",
+        "Anxiety": "Assesses physiological arousal, fear, and panic symptoms.",
+        "Stress": "Assesses chronic non-specific arousal, tension, and irritability.",
+        // BFI-44
+        "Extraversion": "Assesses sociability, assertiveness, and energy level.",
+        "Agreeableness": "Assesses trust, helpfulness, and cooperation.",
+        "Conscientiousness": "Assesses organization, dependability, and work ethic.",
+        "Neuroticism": "Assesses emotional instability, anxiety, and moodiness.",
+        "Openness": "Assesses creativity, curiosity, and artistic interest.",
+        // EQ
+        "Emotional Awareness": "Assesses emotional quotient, awareness, and self-regulation.",
+        // SQ
+        "Social Awareness": "Assesses social intelligence, communication, and relationship management.",
+        // Home Adjustment
+        "Home Adjustment": "Assesses family relationships, dynamics, and adjustment difficulties at home."
+    };
+
+    const ASSESSMENT_TITLES = {
+        'DASS21': 'Section 1',
+        'BFI44': 'Section 2',
+        'EQ': 'Section 3',
+        'SQ': 'Section 4',
+        'HOME': 'Section 6'
+    };
+
+    // Client-side Application State
+    let currentType = '';
+    let sessionId = null;
+    let resumed = false;
+    let alreadyAnsweredIds = [];
+    
+    let allQuestions = [];
+    let remainingQuestions = [];
+    let alreadyAnsweredCount = 0;
+    let currentIndex = 0;
+    
+    let totalElapsedSeconds = 0;
+    let timerInterval = null;
+    let elapsedTimerInterval = null;
+    let questionStartTime = null;
+    
+    // Circular Progress Timer Constants
+    const TIMER_LIMIT = 10;
+    const CIRCUMFERENCE = 2 * Math.PI * 22; // r = 22, circumference = 138.2
+
+    // On DOM Loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        // 1. Read ?type parameter from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        currentType = urlParams.get('type') || 'DASS21';
+        
+        // Setup topbar title
+        document.getElementById('topbar-assessment-title').innerText = ASSESSMENT_TITLES[currentType] || 'Assessment';
+        
+        // Start Assessment Session
+        startAssessmentFlow();
+    });
+
+    // Main Seeding / Start Flow
+    async function startAssessmentFlow() {
+        try {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            
+            // 2. POST /api/assessment/session/start
+            const sessionRes = await fetch('/api/assessment/session/start', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({ type: currentType })
+            });
+            const sessionData = await sessionRes.json();
+            
+            if (sessionData.error) {
+                alert("Error starting session: " + sessionData.error);
+                return;
+            }
+            
+            sessionId = sessionData.session_id;
+            resumed = sessionData.resumed;
+            alreadyAnsweredIds = sessionData.already_answered_ids || [];
+            
+            // 3. GET /api/assessment/questions
+            const questionsRes = await fetch(`/api/assessment/questions?type=${currentType}`);
+            allQuestions = await questionsRes.json();
+            
+            // 4. Filter or position based on resumed state
+            alreadyAnsweredCount = alreadyAnsweredIds.length;
+            if (resumed) {
+                remainingQuestions = allQuestions.filter(q => !alreadyAnsweredIds.includes(q.id));
+            } else {
+                remainingQuestions = [...allQuestions];
+            }
+            
+            // Check if there are questions left to answer
+            if (remainingQuestions.length === 0) {
+                // If already completed, redirect directly
+                window.location.href = `/student/complete?type=${currentType}`;
+                return;
+            }
+            
+            // Start Global Elapsed Time Tracker
+            totalElapsedSeconds = 0;
+            elapsedTimerInterval = setInterval(() => {
+                totalElapsedSeconds++;
+            }, 1000);
+            
+            // Remove Loader
+            document.getElementById('loading-spinner').style.display = 'none';
+            
+            // Start Assessment Question
+            currentIndex = 0;
+            loadQuestion(currentIndex);
+            
+        } catch (e) {
+            console.error(e);
+            alert("An error occurred while launching the assessment portal. Please try again.");
+        }
+    }
+
+    // Load Question to DOM
+    function loadQuestion(index) {
+        if (index >= remainingQuestions.length) {
+            submitAssessment();
+            return;
+        }
+
+        const question = remainingQuestions[index];
+        const displayNum = alreadyAnsweredCount + index + 1;
+        const totalNum = allQuestions.length;
+
+        // Reset and start countdown timer
+        startCountdownTimer(question);
+
+        // Update progress bar width
+        const progressPercent = (displayNum / totalNum) * 100;
+        document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+
+        // Update topbar counts
+        document.getElementById('topbar-progress-text').innerText = `Question ${displayNum} of ${totalNum}`;
+
+        // Populate card details
+        document.getElementById('category-name').innerText = question.category || 'Psychology';
+        document.getElementById('category-desc').innerText = CATEGORY_DESCRIPTIONS[question.category] || 'Assessment Portal Questions';
+        document.getElementById('question-num-display').innerText = `Q${displayNum}`;
+        
+        // Apply BFI-44 prefix rule
+        let questionText = question.question_text;
+        if (currentType === 'BFI44' && !questionText.toLowerCase().startsWith("i see myself as someone who")) {
+            questionText = `I see myself as someone who... ${questionText}`;
+        }
+        document.getElementById('question-text').innerText = questionText;
+
+        // Render Options list
+        renderOptions(question);
+        
+        // Track start time
+        questionStartTime = Date.now();
+    }
+
+    // Render Option buttons/cards
+    function renderOptions(question) {
+        const container = document.getElementById('options-container');
+        container.innerHTML = ''; // Clear old buttons
+        
+        const isHome = (currentType === 'HOME');
+        
+        if (isHome) {
+            // Home Adjustment side-by-side True/Not True layout
+            const wrapper = document.createElement('div');
+            wrapper.className = 'binary-options-container';
+            
+            // Not True (0)
+            const btnNotTrue = document.createElement('button');
+            btnNotTrue.className = 'binary-btn btn-not-true-gray';
+            btnNotTrue.innerText = 'Not True';
+            btnNotTrue.onclick = () => selectOption(0, question.id);
+            
+            // True (1)
+            const btnTrue = document.createElement('button');
+            btnTrue.className = 'binary-btn btn-true-green';
+            btnTrue.innerText = 'True';
+            btnTrue.onclick = () => selectOption(1, question.id);
+            
+            wrapper.appendChild(btnNotTrue);
+            wrapper.appendChild(btnTrue);
+            container.appendChild(wrapper);
+        } else {
+            // Regular Vertical option list
+            const wrapper = document.createElement('div');
+            wrapper.className = 'options-list';
+            
+            (question.options || []).forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-card-btn';
+                btn.innerText = opt.label || opt;
+                btn.onclick = () => selectOption(idx, question.id);
+                wrapper.appendChild(btn);
+            });
+            
+            container.appendChild(wrapper);
+        }
+    }
+
+    // Handle Option Selection
+    function selectOption(optionIndex, questionId) {
+        // Stop timer
+        clearInterval(timerInterval);
+        
+        const cards = document.querySelectorAll('.option-card-btn, .binary-btn');
+        cards.forEach((card, idx) => {
+            if (currentType === 'HOME') {
+                if (idx === optionIndex) {
+                    card.classList.add('selected');
+                }
+            } else {
+                if (idx === optionIndex) {
+                    card.classList.add('selected');
+                }
+            }
+        });
+
+        // Calculate time taken
+        let timeTakenSec = Math.round((Date.now() - questionStartTime) / 1000);
+        timeTakenSec = Math.max(0, Math.min(TIMER_LIMIT, timeTakenSec));
+
+        // Save backup to localStorage
+        localStorage.setItem(`sess_${sessionId}_q_${questionId}`, optionIndex);
+
+        // POST response API call
+        submitAnswer(questionId, optionIndex, false, timeTakenSec);
+    }
+
+    // Submit individual answer
+    async function submitAnswer(questionId, optionIndex, skipped = false, timeTaken = 0) {
+        try {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            
+            const payload = {
+                session_id: sessionId,
+                question_id: questionId,
+                selected_option: optionIndex,
+                auto_skipped: skipped,
+                time_taken_sec: timeTaken
+            };
+
+            // Call API asynchronously (move UI forward after 300ms transition delay)
+            fetch('/api/assessment/response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify(payload)
+            });
+
+            // 300ms smooth transition
+            const card = document.getElementById('question-card');
+            setTimeout(() => {
+                card.classList.add('fade-out');
+                setTimeout(() => {
+                    currentIndex++;
+                    loadQuestion(currentIndex);
+                    card.classList.remove('fade-out');
+                }, 300);
+            }, skipped ? 0 : 300); // no delay if skipped automatically
+            
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    // Countdown Timer logic (disabled)
+    function startCountdownTimer(question) {
+        clearInterval(timerInterval);
+    }
+
+    // Submit complete assessment
+    async function submitAssessment() {
+        clearInterval(timerInterval);
+        clearInterval(elapsedTimerInterval);
+        
+        // Show Loading overlay
+        document.getElementById('loading-spinner').style.display = 'flex';
+        
+        try {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            
+            const submitRes = await fetch('/api/assessment/session/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({
+                    session_id: sessionId,
+                    total_time_seconds: totalElapsedSeconds
+                })
+            });
+            const data = await submitRes.json();
+            
+            if (data.success) {
+                // Clear localStorage keys starting with sess_{id}_
+                const prefix = `sess_${sessionId}_`;
+                const keysToRemove = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.startsWith(prefix)) {
+                        keysToRemove.push(key);
+                    }
+                }
+                keysToRemove.forEach(k => localStorage.removeItem(k));
+                
+                // Redirect to results complete page
+                window.location.href = `/student/complete?type=${currentType}`;
+            } else {
+                alert("Submission failed: " + (data.error || "Please reload the page."));
+            }
+        } catch (e) {
+            console.error(e);
+            alert("Failed to submit assessment scores. Please check your network connection.");
+        }
+    }
+</script>
+{% endblock %}

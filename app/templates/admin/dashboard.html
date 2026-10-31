@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark-navy sidebar collapse" style="min-height: 100vh; background-color: #2C3E50;">
+            <div class="position-sticky pt-3">
+                <div class="px-3 mb-4">
+                    <h4 class="text-white fw-bold">Admin Portal</h4>
+                </div>
+                <ul class="nav flex-column px-2">
+                    <li class="nav-item mb-2">
+                        <a class="nav-link active text-white p-3 rounded bg-primary" href="{{ url_for('admin.dashboard') }}">
+                            <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white-50 p-3 rounded" href="{{ url_for('admin.students') }}">
+                            <i class="bi bi-people me-2"></i> Students
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white-50 p-3 rounded" href="{{ url_for('admin.counsellors') }}">
+                            <i class="bi bi-person-badge me-2"></i> Counsellors
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white-50 p-3 rounded" href="{{ url_for('admin.assign') }}">
+                            <i class="bi bi-person-plus me-2"></i> Assignments
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4 bg-light">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard Overview</h1>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row mb-4">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Students</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ stats.total_students }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="bi bi-people fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Counsellors</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ stats.total_counsellors }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="bi bi-person-badge fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Assessments Today</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ stats.completed_today }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="bi bi-calendar-check fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Unassigned Students</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ stats.unassigned_students }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="bi bi-exclamation-triangle fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Completions -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Recent Assessment Completions</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>UAi ID</th>
+                                    <th>Department</th>
+                                    <th>Completed At</th>
+                                    <th>Risk Level</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for session in recent_completions %}
+                                <tr>
+                                    <td>{{ session.student_profile.user.name }}</td>
+                                    <td>{{ session.student_profile.user.uai_id }}</td>
+                                    <td>{{ session.student_profile.department }}</td>
+                                    <td>{{ session.completed_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>
+                                        {% set risk = session.student_profile.risk_level %}
+                                        <span class="badge bg-{{ 'success' if risk == 'Normal' else ('warning' if risk == 'Mild' else ('orange' if risk == 'Moderate' else 'danger')) }}">
+                                            {{ risk or 'Pending' }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<style>
+    .sidebar .nav-link:hover { background-color: #34495E; color: white !important; }
+    .border-left-primary { border-left: 0.25rem solid #4e73df !important; }
+    .border-left-success { border-left: 0.25rem solid #1cc88a !important; }
+    .border-left-info { border-left: 0.25rem solid #36b9cc !important; }
+    .border-left-warning { border-left: 0.25rem solid #f6c23e !important; }
+    .bg-orange { background-color: #fd7e14 !important; }
+</style>
+{% endblock %}
